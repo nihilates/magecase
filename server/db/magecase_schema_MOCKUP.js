@@ -6,6 +6,7 @@ let userTable = {
   password: String, //password chosen at registration
   email: String, //email associated with the user
   //premiumAcc: Boolean, //optional paid account status
+  userIcon: String, //path to user icon image
   charCount: Number, //count the number of created character instances. Possibly limit based on account type
   gameCount: Number //count the number of created game instances. Possibly limit based on account type
 }
@@ -46,6 +47,13 @@ let currencyUnitTable = { //each unit of currency (such as "silver" is a unit of
 let itemTypeTable = { //each physical item will belong to a type. This will allow better filtering as well as unique shop generation
   typeID: Number, //Automatically generated
   typeName: String //name of a given item type, such as "weapon" or "consumable"
+}
+
+let itemSubtypeTable = {
+  subID: Number, //Automatically generated
+  subName: String, //name of the subtype
+  mainType: Number, //Foreign-Key reference to itemTypeTable
+  icon: String //Path to item icon image
 }
 
 let itemTable = { //the details around a given item entry
@@ -102,7 +110,7 @@ let shopsTable = { //collection of shops which GMs can customize and players can
 let shopInventoryTable = {
   shopInvID: Number,//Automatically generated
   shop: Number, //Foreign-Key reference to the shopsTable
-  entryType: String, //type identifier for a given inventory entry, such as "currency", "item" or "asset"
+  currSystem: Number, //Foreign-Key reference to currencySystem table
   entry: Number, //Foreign-Key reference to currencyUnitTable, itemTable
   entryCount: Number //how many instances of a given entry does the shop have in stock, such as gold pieces or arrows.
 }
