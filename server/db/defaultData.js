@@ -1,6 +1,8 @@
 const db = require('./db.js');
 
 module.exports.seedData = (db) => {
+
+  //TEMPORARY SAMPLE DATA//
   db.Users.create({
     user_name: 'admin',
     user_email: 'admin@magecase.com',
@@ -9,6 +11,20 @@ module.exports.seedData = (db) => {
     user_icon: 'www.url_to_icon.net',
     char_count: 2,
     game_count: 1
+  });
+
+  db.Characters.create({
+    char_name: 'Biff Meatwagon',
+    user: 1,
+    currency_sys: 1,
+    game: 1
+  });
+
+  db.Games.create({
+    game_name: 'Fantasy Texas',
+    user: 1,
+    strict_mode: false,
+    currency_sys: 1
   });
 };
 

@@ -1,1 +1,2 @@
-# magecase
+# MageCase
+Mobile app for managing inventories in a fantasy tabletop RPG setting. Additional features include a "Game Master mode" that allows players to network together in a joined game, trading items, currency, and even shopping at NPC merchant stores using ingame money, managed by the Game Master.
