@@ -23,7 +23,29 @@ module.exports.seedData = (db) => {
   db.Games.create({
     game_name: 'Fantasy Texas',
     user: 1,
-    strict_mode: false,
+    currency_sys: 1
+  });
+  //END OF SAMPLE DATA//
+
+  //Default Currency Options//
+  //D&D Standard
+  db.CurrencySystems.create({
+    system_name: 'D&D Standard'
+  });
+
+  db.CurrencyUnits.create({
+    unit_name: 'Copper',
+    unit_value: 0.01,
+    currency_sys: 1
+  });
+  db.CurrencyUnits.create({
+    unit_name: 'Silver',
+    unit_value: 0.1,
+    currency_sys: 1
+  });
+  db.CurrencyUnits.create({
+    unit_name: 'Gold',
+    unit_value: 1,
     currency_sys: 1
   });
 };

@@ -15,6 +15,7 @@ const schema = new Sequelize('magecase_db', 'root', 'password', {
 module.exports.syncTables = (force, schema) => {
   module.exports.schema = schema;
 
+  //PRIMARY SCHEMAS//
   //User Data schema
   module.exports.Users = schema.define('users', {
     user_id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
@@ -41,7 +42,23 @@ module.exports.syncTables = (force, schema) => {
     game_id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
     game_name: {type: Sequelize.STRING},
     user: {type: Sequelize.INTEGER}, //Foreign-Key
-    strict_mode: {type: Sequelize.BOOLEAN, defaultValue: false}, //Foreign-Key
+    strict_mode: {type: Sequelize.BOOLEAN, defaultValue: false},
+    currency_sys: {type: Sequelize.INTEGER} //Foreign-Key
+  });
+
+  //UNDER-SCHEMAS//
+  //Currency System schema
+  module.exports.CurrencySystems = schema.define('currency_systems', {
+    system_id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    system_name: {type: Sequelize.STRING},
+    is_custom: {type: Sequelize.BOOLEAN, defaultValue: false},
+    user: {type: Sequelize.INTEGER, allowNull: true} //Foreign-Key
+  });
+
+  module.exports.CurrencyUnits = schema.define('currency_units', {
+    unit_id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    unit_name: {type: Sequelize.STRING},
+    unit_value: {type: Sequelize.FLOAT},
     currency_sys: {type: Sequelize.INTEGER} //Foreign-Key
   });
 
