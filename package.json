@@ -1,0 +1,29 @@
+{
+  "name": "magecase",
+  "version": "1.0.0",
+  "description": "tabletop inventory",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nihilates/magecase.git"
+  },
+  "keywords": [
+    "tabletop",
+    "rpg",
+    "inventory"
+  ],
+  "author": "Sean",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nihilates/magecase/issues"
+  },
+  "homepage": "https://github.com/nihilates/magecase#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mysql": "^2.13.0",
+    "sequelize": "^4.0.0"
+  }
+}
