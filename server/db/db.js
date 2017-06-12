@@ -18,7 +18,7 @@ module.exports.syncTables = (force, schema) => {
   //PRIMARY SCHEMAS//
   //User Data schema
   module.exports.Users = schema.define('users', {
-    user_id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
     user_name: {type: Sequelize.STRING},
     user_email: {type: Sequelize.STRING},
     password: {type: Sequelize.STRING},
@@ -30,37 +30,51 @@ module.exports.syncTables = (force, schema) => {
 
   //Character schema
   module.exports.Characters = schema.define('characters', {
-    char_id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    userId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, Users table
     char_name: {type: Sequelize.STRING},
-    user: {type: Sequelize.INTEGER}, //Foreign-Key
-    currency_sys: {type: Sequelize.INTEGER}, //Foreign-Key
-    game: {type: Sequelize.INTEGER} //Foreign-Key
+    gameId: {type: Sequelize.INTEGER, allowNull: true}, //Foreign-Key, Games table
+    currencyId: {type: Sequelize.INTEGER, allowNull: false} //Foreign-Key, CurrencySystem table
   });
 
   //Games schema
   module.exports.Games = schema.define('games', {
-    game_id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    userId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, Users table
     game_name: {type: Sequelize.STRING},
-    user: {type: Sequelize.INTEGER}, //Foreign-Key
-    strict_mode: {type: Sequelize.BOOLEAN, defaultValue: false},
-    currency_sys: {type: Sequelize.INTEGER} //Foreign-Key
+    currencyId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, CurrencySystems table
+    strict_mode: {type: Sequelize.BOOLEAN, defaultValue: false}
   });
 
-  //UNDER-SCHEMAS//
+  //SECONDARY SCHEMAS//
   //Currency System schema
   module.exports.CurrencySystems = schema.define('currency_systems', {
-    system_id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
     system_name: {type: Sequelize.STRING},
     is_custom: {type: Sequelize.BOOLEAN, defaultValue: false},
-    user: {type: Sequelize.INTEGER, allowNull: true} //Foreign-Key
+    userId: {type: Sequelize.INTEGER, allowNull: true} //Foreign-Key, User's table
   });
 
   module.exports.CurrencyUnits = schema.define('currency_units', {
-    unit_id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
     unit_name: {type: Sequelize.STRING},
     unit_value: {type: Sequelize.FLOAT},
-    currency_sys: {type: Sequelize.INTEGER} //Foreign-Key
+    currencyId: {type: Sequelize.INTEGER, {allowNull: false}} //Foreign-Key, CurrencySystems table
   });
 
+  //Foreign Key Configuration//
+  //Characters Table
+  module.exports.Characters.belongsTo(module.exports.Users);
+  module.exports.Characters.belongsTo(module.exports.Games);
+  module.exports.Characters.belongsTo(module.exports.CurrencySystems, {as: 'currency'});
+  //Games Table
+  module.exports.Games.belongsTo(module.exports.Users);
+  module.exports.Games.belongsTo(module.exports.CurrencySystems, {as: 'currency'});
+  //Currency Systems Table
+  module.exports.CurrencySystems.belongsTo(module.exports.Users);
+  //Currency Units Table
+  module.exports.CurrencyUnits.belongsTo(module.exports.CurrencySystems, {as: 'currency'});
+
+  //Sync All Data
   return schema.sync({force: force});
 };
