@@ -1,21 +1,45 @@
 const db = require('./db.js');
-const currency5e = require('./defaults/5e/currencies.js');
+//Seed Data//
+const currency = require('./defaults/currencies.js'); //currencies of all systems
+const types = require('./defaults/types.js'); //types and subtypes of items
+const weapons5e = require('./defaults/5e/weapons.js'); //weapons from 5e
+const assets = require('./defaults/assets.js'); //types of assets
+const mountsAnimals = require('./defaults/5e/mountsAnimals.js'); //mounts & animals from 5e
 
 module.exports.seedData = (db) => {
   //Default Currency Options//
-  db.CurrencySystems.create({ //5th Edition D&D
-    system_name: 'D&D Fifth Edition'
-  }).then(() => { //Create the currency units once the system has been created
-    currency5e.units.forEach((unit) => {
-      db.CurrencyUnits.create(unit);
-    });
+  currency.systems.forEach((system) => {
+    db.CurrencySystems.create(system);
+  });
+
+  currency.units.forEach((unit) => {
+    db.CurrencyUnits.create(unit);
+  });
+
+  //Default Item Type & Subtype Options//
+  types.main.forEach((type) => { //create main types
+    db.ItemTypes.create(type);
+  });
+
+  types.sub.forEach((subtype) => { //create subtypes
+    db.ItemSubtypes.create(subtype);
   });
 
   //Default Item Options//
-  /*
-    Here we will create default collections of items to be available to all players and games.
-    We will use player/game-master handbooks to settle on this data.
-  */
+  //5e Weapons//
+  weapons5e.items.forEach((item) => {
+    db.Items.create(item);
+  });
+
+  //Default Asset Type Options//
+  assets.types.forEach((type) => {
+    db.AssetTypes.create(type);
+  });
+
+  //Default Asset Options//
+  mountsAnimals.assets.forEach((asset) => {
+    db.Assets.create(asset);
+  });
 
   //TEMPORARY SAMPLE DATA//
   /*
@@ -45,4 +69,3 @@ module.exports.seedData = (db) => {
   });
   //END OF SAMPLE DATA//
 };
-

@@ -73,7 +73,7 @@ module.exports.syncTables = (force, schema) => {
   module.exports.ItemSubtypes = schema.define('item_subtypes', {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
     sub_name: {type: Sequelize.STRING},
-    itemId: {type: Sequelize.INTEGER}, //Foreign-Key, ItemTypes table
+    itemTypeId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, ItemTypes table
     icon: {type: Sequelize.STRING},
     is_custom: {type: Sequelize.BOOLEAN, defaultValue: false},
     userId: {type: Sequelize.INTEGER, allowNull: true} //Foreign-Key, Users table
@@ -84,28 +84,65 @@ module.exports.syncTables = (force, schema) => {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
     item_name: {type: Sequelize.STRING},
     typeId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, ItemTypes table
-    subType: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, ItemSubtypes table
+    subTypeId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, ItemSubtypes table
     value: {type: Sequelize.FLOAT, defaultValue: 0},
-    weight: {type: Sequelize.INTEGER, defaultValue: 0},
+    weight: {type: Sequelize.FLOAT, defaultValue: 0},
     description: {type: Sequelize.STRING},
+    properties: {type: Sequelize.STRING},
+    rangeLo: {type: Sequelize.INTEGER, defaultValue: 0},
+    rangeHi: {type: Sequelize.INTEGER, defaultValue: 0},
+    versatility: {type: Sequelize.INTEGER, defaultValue: 0},
+    damageType: {type: Sequelize.STRING},
     dice_type: {type: Sequelize.INTEGER, defaultValue: 0},
     dice_count: {type: Sequelize.INTEGER, defaultValue: 0},
     is_custom: {type: Sequelize.BOOLEAN, defaultValue: false},
-    userId: {type: Sequelize.INTEGER, alloNull: true} //Foreign-Key, Users table
+    userId: {type: Sequelize.INTEGER, allowNull: true} //Foreign-Key, Users table
+  }, {timestamps: false});
+
+  //Assets Types schema
+  module.exports.AssetTypes = schema.define('asset_types', {
+    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    type_name: {type: Sequelize.STRING},
+    icon: {type: Sequelize.STRING},
+    is_custom: {type: Sequelize.BOOLEAN, defaultValue: false},
+    userId: {type: Sequelize.INTEGER, allowNull: true} //Foreign-Key, Users table
+  }, {timestamps: false});
+
+  //Asset schema
+  module.exports.Assets = schema.define('asset', {
+    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    asset_name: {type: Sequelize.STRING},
+    typeId: {type: Sequelize.INTEGER}, //Foreign-Key, AssetTypes table
+    value: {type: Sequelize.FLOAT, defaultValue: 0},
+    properties: {type: Sequelize.STRING},
+    description: {type: Sequelize.STRING},
+    is_custom: {type: Sequelize.BOOLEAN, defaultValue: false},
+    userId: {type: Sequelize.INTEGER, allowNull: true} //Foreign-Key, Users table
   }, {timestamps: false});
 
   //Foreign Key Configuration//
-  //Characters Table
+  //Characters Table Foreign-Keys
   module.exports.Characters.belongsTo(module.exports.Users);
   module.exports.Characters.belongsTo(module.exports.Games);
   module.exports.Characters.belongsTo(module.exports.CurrencySystems, {as: 'currency'});
-  //Games Table
+  //Games Table Foreign-Keys
   module.exports.Games.belongsTo(module.exports.Users);
   module.exports.Games.belongsTo(module.exports.CurrencySystems, {as: 'currency'});
-  //Currency Systems Table
+  //Currency Systems Table Foreign-Keys
   module.exports.CurrencySystems.belongsTo(module.exports.Users);
-  //Currency Units Table
+  //Currency Units Table Foreign-Keys
   module.exports.CurrencyUnits.belongsTo(module.exports.CurrencySystems, {as: 'currency'});
+  //Item Subtypes Table Foreign-Keys
+  module.exports.ItemSubtypes.belongsTo(module.exports.ItemTypes, {as: 'itemType'});
+  //Items Table Foreign-Keys
+  module.exports.Items.belongsTo(module.exports.ItemTypes, {as: 'type'});
+  module.exports.Items.belongsTo(module.exports.ItemSubtypes, {as: 'subType'});
+  module.exports.Items.belongsTo(module.exports.Users);
+  //Asset Types Table Foreign-Keys
+  module.exports.AssetTypes.belongsTo(module.exports.Users);
+  //Asset Table Foreign-Keys
+  module.exports.Assets.belongsTo(module.exports.AssetTypes, {as: 'type'});
+  module.exports.Assets.belongsTo(module.exports.Users);
 
   //Sync All Data
   return schema.sync({force: force});
