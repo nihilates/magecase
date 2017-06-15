@@ -6,8 +6,10 @@ const config = require('./config.js');
 
 const app = express();
 
-require('./routes.js')(app, express, db);
+db.syncTables(false, config.database);
 
 app.listen(config.port, () => {
   console.log('Roll to build server on', config.port + '...');
 });
+
+require('./routes.js')(app, express, db);
