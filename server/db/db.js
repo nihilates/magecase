@@ -26,7 +26,7 @@ module.exports.syncTables = (force, schema) => {
     user_icon: {type: Sequelize.STRING},
     char_count: {type: Sequelize.INTEGER, defaultValue: 0},
     game_count: {type: Sequelize.INTEGER, defaultValue: 0}
-  });
+  }, {timestamps: true});
 
   //Character schema
   module.exports.Characters = schema.define('characters', {
@@ -35,7 +35,7 @@ module.exports.syncTables = (force, schema) => {
     char_name: {type: Sequelize.STRING},
     gameId: {type: Sequelize.INTEGER, allowNull: true}, //Foreign-Key, Games table
     currencyId: {type: Sequelize.INTEGER, allowNull: false} //Foreign-Key, CurrencySystem table
-  });
+  }, {timestamps: true});
 
   //Games schema
   module.exports.Games = schema.define('games', {
@@ -44,7 +44,7 @@ module.exports.syncTables = (force, schema) => {
     game_name: {type: Sequelize.STRING},
     currencyId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, CurrencySystems table
     strict_mode: {type: Sequelize.BOOLEAN, defaultValue: false}
-  });
+  }, {timestamps: true});
 
   //SECONDARY SCHEMAS//
   //Currency System schema
@@ -137,6 +137,23 @@ module.exports.syncTables = (force, schema) => {
     gameId: {type: Sequelize.INTEGER, allowNull: false} //Foreign-Key, Games table
   }, {timestamps: false});
 
+  //Shop Inventory schema
+  module.exports.ShopInventory = schema.define('shop_inventory', {
+    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    shopId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, Shops table
+    currencyId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, CurrencySystems table
+    itemId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, Items table
+    count: {type: Sequelize.INTEGER, defaultValue: 0}
+  }, {timestamps: true});
+
+  //Inventory schema
+  module.exports.Inventory = schema.define('inventory', {
+    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    charId: {type: Sequelize.INTEGER, allowNull: false},
+    itemId: {type: Sequelize.INTEGER, allowNull: false},
+    count: {type: Sequelize.INTEGER, defaultValue: 1}
+  }, {timestamps: true});
+
   //Foreign Key Configuration//
   //Characters Table Foreign-Keys
   module.exports.Characters.belongsTo(module.exports.Users);
@@ -166,6 +183,10 @@ module.exports.syncTables = (force, schema) => {
   module.exports.Shops.belongsTo(module.exports.ShopTypes, {as: 'type'});
   module.exports.Shops.belongsTo(module.exports.Users);
   module.exports.Shops.belongsTo(module.exports.Games);
+  //Shop Inventory Table Foreign-Keys
+  module.exports.ShopInventory.belongsTo(module.exports.Shops);
+  module.exports.ShopInventory.belongsTo(module.exports.CurrencySystems);
+  module.exports.ShopInventory.belongsTo(module.exports.Items);
 
   //Sync All Data
   return schema.sync({force: force});
