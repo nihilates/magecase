@@ -144,7 +144,7 @@ module.exports.syncTables = (force, schema) => {
     currencyId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, CurrencySystems table
     itemId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, Items table
     count: {type: Sequelize.INTEGER, defaultValue: 0}
-  }, {timestamps: true});
+  }, {timestamps: false});
 
   //Inventory schema
   module.exports.Inventory = schema.define('inventory', {
@@ -185,7 +185,7 @@ module.exports.syncTables = (force, schema) => {
   module.exports.Shops.belongsTo(module.exports.Games);
   //Shop Inventory Table Foreign-Keys
   module.exports.ShopInventory.belongsTo(module.exports.Shops);
-  module.exports.ShopInventory.belongsTo(module.exports.CurrencySystems);
+  module.exports.ShopInventory.belongsTo(module.exports.CurrencySystems, {as: 'currency'});
   module.exports.ShopInventory.belongsTo(module.exports.Items);
 
   //Sync All Data

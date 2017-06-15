@@ -28,6 +28,16 @@ module.exports.games = [
     game_name: 'Fantasy Texas',
     userId: 1,
     currencyId: 1
+  },
+  {
+    game_name: 'Space Texas',
+    userId: 1,
+    currencyId: 1
+  },
+  {
+    game_name: 'Innistrad',
+    userId: 2,
+    currencyId: 1
   }
 ];
 
@@ -37,5 +47,108 @@ module.exports.characters = [
     userId: 1,
     gameId: 1,
     currencyId: 1
+  },
+  {
+    char_name: 'Sinjun',
+    userId: 2,
+    gameId: 2,
+    currencyId: 1,
+  }
+];
+
+module.exports.inventories = [
+  //Sinjun's Inventory
+  {
+    charId: 2,
+    itemId: 26, //Rapier
+    count: 1
+  },
+  {
+    charId: 2,
+    itemId: 2, //Dagger
+    count: 2
+  },
+  {
+    charId: 2,
+    itemId: 13, //Shortbow
+    count: 1
+  }
+  //End of Sinjun's Inventory
+];
+
+const shop = { //Shop type key
+  weapons: 1,
+  armors: 2,
+  apothecary: 3,
+  adventurGear: 4,
+  magics: 5
+};
+
+module.exports.shops = [
+  {
+    //id: 1,
+    shop_name: 'Aelyndar\'s Emporeum',
+    typeId: shop.magics,
+    userId: 2,
+    gameId: 2
+  },
+  {
+    //id: 2,
+    shop_name: 'Reilad\'s Hammer',
+    typeId: shop.weapons,
+    userId: 2,
+    gameId: 2
+  },
+  {
+    //id: 3,
+    shop_name: 'Poisons by Sneakers',
+    typeId: shop.apothecary,
+    userId: 2,
+    gameId: 2
+  }
+];
+//1,3,6,7,16,23,31
+module.exports.shopInventories = [
+  {
+    shopId: 2, //Reilad's Hammer
+    currencyId: 1,
+    itemId: 1, //Club
+    count: 5
+  },
+  {
+    shopId: 2, //Reilad's Hammer
+    currencyId: 1,
+    itemId: 3, //Greatclub
+    count: 8
+  },
+  {
+    shopId: 2, //Reilad's Hammer
+    currencyId: 1,
+    itemId: 6, //Light hammer
+    count: 9
+  },
+  {
+    shopId: 2, //Reilad's Hammer
+    currencyId: 1,
+    itemId: 7, //Mace
+    count: 3
+  },
+  {
+    shopId: 2, //Reilad's Hammer
+    currencyId: 1,
+    itemId: 16, //Flail
+    count: 4
+  },
+  {
+    shopId: 2, //Reilad's Hammer
+    currencyId: 1,
+    itemId: 23, //Maul
+    count: 2
+  },
+  {
+    shopId: 2, //Reilad's Hammer
+    currencyId: 1,
+    itemId: 31, //Warhammer
+    count: 3
   }
 ];

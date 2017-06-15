@@ -11,6 +11,7 @@ const subType = {
 
 module.exports.items = [
   {
+    // id: 1,
     item_name: 'Club',
     typeId: typeId,
     subTypeId: subType.simpleMelee,
@@ -25,6 +26,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 2,
     item_name: 'Dagger',
     typeId: typeId,
     subTypeId: subType.simpleMelee,
@@ -39,6 +41,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 3,
     item_name: 'Greatclub',
     typeId: typeId,
     subTypeId: subType.simpleMelee,
@@ -53,6 +56,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 4,
     item_name: 'Handaxe',
     typeId: typeId,
     subTypeId: subType.simpleMelee,
@@ -67,6 +71,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 5,
     item_name: 'Javelin',
     typeId: typeId,
     subTypeId: subType.simpleMelee,
@@ -81,6 +86,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 6,
     item_name: 'Light hammer',
     typeId: typeId,
     subTypeId: subType.simpleMelee,
@@ -95,6 +101,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 7,
     item_name: 'Mace',
     typeId: typeId,
     subTypeId: subType.simpleMelee,
@@ -109,6 +116,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 8,
     item_name: 'Quarterstaff',
     typeId: typeId,
     subTypeId: subType.simpleMelee,
@@ -123,6 +131,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 9,
     item_name: 'Sickle',
     typeId: typeId,
     subTypeId: subType.simpleMelee,
@@ -137,6 +146,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 10,
     item_name: 'Spear',
     typeId: typeId,
     subTypeId: subType.simpleMelee,
@@ -151,6 +161,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 11,
     item_name: 'Crossbow, light',
     typeId: typeId,
     subTypeId: subType.simpleRanged,
@@ -165,6 +176,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 12,
     item_name: 'Dart',
     typeId: typeId,
     subTypeId: subType.simpleRanged,
@@ -179,6 +191,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 13,
     item_name: 'Shortbow',
     typeId: typeId,
     subTypeId: subType.simpleRanged,
@@ -193,6 +206,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 14,
     item_name: 'Sling',
     typeId: typeId,
     subTypeId: subType.simpleRanged,
@@ -207,6 +221,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 15,
     item_name: 'Battleaxe',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -221,6 +236,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 16,
     item_name: 'Flail',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -235,6 +251,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 17,
     item_name: 'Glaive',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -249,6 +266,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 18,
     item_name: 'Greataxe',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -263,6 +281,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 19,
     item_name: 'Greatsword',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -277,6 +296,7 @@ module.exports.items = [
     dice_count: 2
   },
   {
+    // id: 20,
     item_name: 'Halberd',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -291,6 +311,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 21,
     item_name: 'Lance',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -305,6 +326,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 22,
     item_name: 'Longsword',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -319,6 +341,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 23,
     item_name: 'Maul',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -333,6 +356,7 @@ module.exports.items = [
     dice_count: 2
   },
   {
+    // id: 24,
     item_name: 'Morningstar',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -347,6 +371,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 25,
     item_name: 'Pike',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -361,6 +386,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 26,
     item_name: 'Rapier',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -375,6 +401,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 27,
     item_name: 'Scimitar',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -389,6 +416,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 28,
     item_name: 'Shortsword',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -403,6 +431,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 29,
     item_name: 'Trident',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -417,6 +446,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 30,
     item_name: 'War pick',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -431,6 +461,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 31,
     item_name: 'Warhammer',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -445,6 +476,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 32,
     item_name: 'Whip',
     typeId: typeId,
     subTypeId: subType.martialMelee,
@@ -459,6 +491,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 33,
     item_name: 'Blowgun',
     typeId: typeId,
     subTypeId: subType.martialRanged,
@@ -473,6 +506,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 34,
     item_name: 'Crossbow, hand',
     typeId: typeId,
     subTypeId: subType.martialRanged,
@@ -487,6 +521,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 35,
     item_name: 'Crossbow, heavy',
     typeId: typeId,
     subTypeId: subType.martialRanged,
@@ -501,6 +536,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 36,
     item_name: 'Longbow',
     typeId: typeId,
     subTypeId: subType.martialRanged,
@@ -515,6 +551,7 @@ module.exports.items = [
     dice_count: 1
   },
   {
+    // id: 37,
     item_name: 'Net',
     typeId: typeId,
     subTypeId: subType.martialRanged,
