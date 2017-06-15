@@ -120,6 +120,23 @@ module.exports.syncTables = (force, schema) => {
     userId: {type: Sequelize.INTEGER, allowNull: true} //Foreign-Key, Users table
   }, {timestamps: false});
 
+  //Shop Types schema
+  module.exports.ShopTypes = schema.define('shop_types', {
+    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    type_name: {type: Sequelize.STRING},
+    is_custom: {type: Sequelize.BOOLEAN, defaultValue: false},
+    userId: {type: Sequelize.INTEGER, allowNull: true} //Foreign-Key, Users table
+  }, {timestamps: false});
+
+  //Shops schema
+  module.exports.Shops = schema.define('shops', {
+    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+    shop_name: {type: Sequelize.STRING},
+    typeId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, ShopTypes table
+    userId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, Users table
+    gameId: {type: Sequelize.INTEGER, allowNull: false} //Foreign-Key, Games table
+  }, {timestamps: false});
+
   //Foreign Key Configuration//
   //Characters Table Foreign-Keys
   module.exports.Characters.belongsTo(module.exports.Users);
