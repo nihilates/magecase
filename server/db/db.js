@@ -1,20 +1,7 @@
 const Sequelize = require('Sequelize');
 
-//Connect with Server//
-const schema = new Sequelize('magecase_db', 'root', 'password', {
-  host: 'localhost',
-  dialect: 'mysql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
-});
-
 //Create Schemas for Tables//
 module.exports.syncTables = (force, schema) => {
-  module.exports.schema = schema;
-
   //PRIMARY SCHEMAS//
   //User Data schema
   module.exports.Users = schema.define('users', {

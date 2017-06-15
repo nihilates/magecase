@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/nihilates/magecase#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "morgan": "^1.8.2",
     "mysql": "^2.13.0",
     "mysql2": "^1.3.3",
     "sequelize": "^4.0.0"
