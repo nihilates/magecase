@@ -13,5 +13,5 @@ const schema = new Sequelize('magecase_db', 'root', 'password', {
 });
 
 db.syncTables(true, schema).then(() => {
-  defaults.seedData(db)
+  defaults.seedData(db);
 });

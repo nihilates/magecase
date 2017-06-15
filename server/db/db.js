@@ -160,6 +160,12 @@ module.exports.syncTables = (force, schema) => {
   //Asset Table Foreign-Keys
   module.exports.Assets.belongsTo(module.exports.AssetTypes, {as: 'type'});
   module.exports.Assets.belongsTo(module.exports.Users);
+  //Shop Types Table Foreign-Keys
+  module.exports.ShopTypes.belongsTo(module.exports.Users);
+  //Shops Table Foreign-Keys
+  module.exports.Shops.belongsTo(module.exports.ShopTypes, {as: 'type'});
+  module.exports.Shops.belongsTo(module.exports.Users);
+  module.exports.Shops.belongsTo(module.exports.Games);
 
   //Sync All Data
   return schema.sync({force: force});
