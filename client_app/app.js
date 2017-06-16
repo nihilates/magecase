@@ -19,13 +19,13 @@ export default class App extends Component {
     }
   }
 
-  // componentWillMount() {
-  //   //test that the server can be called on
-  //   fetch('127.0.0.1:8080/api/items')
-  //     .then(resp => resp.json())
-  //     .then(data => this.setState({data: data}))
-  //     .catch(err => console.error(err));
-  // }
+  componentWillMount() {
+    //test that the server can be called on
+    fetch('http://67.207.82.217:8080//api/items')
+      .then(resp => resp.json())
+      .then(data => this.setState({data: data}))
+      .catch(err => console.error(err));
+  }
 
   render() {
     return (
