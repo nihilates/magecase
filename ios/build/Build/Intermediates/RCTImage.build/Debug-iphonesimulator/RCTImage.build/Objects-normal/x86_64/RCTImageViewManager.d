@@ -1,0 +1,30 @@
+dependencies: \
+  /Users/nihil/Documents/Magecase/node_modules/react-native/Libraries/Image/RCTImageViewManager.m \
+  /Users/nihil/Documents/Magecase/node_modules/react-native/Libraries/Image/RCTImageViewManager.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTViewManager.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/nihil/Documents/Magecase/node_modules/react-native/Libraries/Image/RCTImageLoader.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTResizeMode.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTURLRequestHandler.h \
+  /Users/nihil/Documents/Magecase/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTURLRequestDelegate.h \
+  /Users/nihil/Documents/Magecase/node_modules/react-native/Libraries/Image/RCTImageView.h
