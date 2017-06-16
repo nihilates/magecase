@@ -1,4 +1,4 @@
-const Sequelize = require('Sequelize');
+const Sequelize = require('sequelize');
 
 //Create Schemas for Tables//
 module.exports.syncTables = (force, schema) => {
