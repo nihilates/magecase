@@ -1,3 +1,4 @@
+'use strict'
 const path = require('path');
 const https = require('https');
 const morgan = require('morgan');

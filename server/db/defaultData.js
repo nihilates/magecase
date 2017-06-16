@@ -1,3 +1,4 @@
+'use strict'
 const db = require('./db.js');
 //Seed Data//
 const sample = require('./defaults/sampleData.js'); //sample user-created data

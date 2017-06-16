@@ -1,3 +1,4 @@
+'use strict'
 const hlp = require('../helper');
 
 //API routes for the Items table

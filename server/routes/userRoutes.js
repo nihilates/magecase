@@ -1,3 +1,4 @@
+'use strict'
 //API routes for the Users table
 module.exports = (app, db) => {
   app.post('/api/users', (req, res) => {
