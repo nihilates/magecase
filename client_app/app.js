@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { provider } from 'react-redux';
+import { createStore, applyMiddleware, combineRuxers, compose } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
 import {
   AppRegistry,
   StyleSheet,
@@ -17,7 +21,7 @@ export default class App extends Component {
           Successfully rendering from a single file.
         </Text>
         <Text style={styles.instructions}>
-          Drink and be merry!
+          Let's have a pint or two!
         </Text>
       </View>
     );
