@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
 module.exports.port = 8080;
 
 //Database Configuration
-module.exports.database = new Sequelize('magecase_db', 'root', 'password', {
+module.exports.database = new Sequelize('magecase_db', 'root', 'rolld8', {
   host: 'localhost',
   dialect: 'mysql',
   pool: {
