@@ -1,5 +1,5 @@
 //General Configuration//
-const Sequelize = require('Sequelize');
+const Sequelize = require('sequelize');
 
 //Server Configuration
 module.exports.port = 8080;
