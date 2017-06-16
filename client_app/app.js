@@ -11,17 +11,33 @@ import {
 } from 'react-native';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: []
+    }
+  }
+
+  // componentWillMount() {
+  //   //test that the server can be called on
+  //   fetch('127.0.0.1:8080/api/items')
+  //     .then(resp => resp.json())
+  //     .then(data => this.setState({data: data}))
+  //     .catch(err => console.error(err));
+  // }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Hello from the App.js file!
+          Response from Server:
         </Text>
         <Text style={styles.instructions}>
-          Successfully rendering from a single file.
+          {JSON.stringify(this.state.data)}
         </Text>
         <Text style={styles.instructions}>
-          Let's have a pint or two!
+          How's that then?
         </Text>
       </View>
     );

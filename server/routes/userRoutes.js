@@ -1,4 +1,4 @@
-//API routes for creating new users
+//API routes for the Users table
 module.exports = (app, db) => {
   app.post('/api/users', (req, res) => {
     //Shorten the incoming data terms
