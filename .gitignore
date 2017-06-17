@@ -1,4 +1,5 @@
+ios/build
+android/build
 anonymous_data
-.gitignore
 node_modules
 .DS_Store
