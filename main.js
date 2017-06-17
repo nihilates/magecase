@@ -26,7 +26,7 @@ class App extends React.Component {
           Response from Server:
         </Text>
         <Text style={styles.instructions}>
-          {JSON.stringify(this.state.data)}
+          {this.state.data.length + " items found."}
         </Text>
         <Text style={styles.instructions}>
           How's that then?
