@@ -10,6 +10,7 @@ module.exports = (app, db) => {
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
+  };
 
   app.post('/api/users', (req, res) => {
     //Shorten the incoming data terms
