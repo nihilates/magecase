@@ -31,23 +31,12 @@ const createAccessToken = () => {
 /*END OF WEBTOKEN FACTORY*/
 
 /*Response Helpers*/
-module.exports.respQuery = (dbResp, req, res, reqToken) => { //reqToken is an optional boolean to determin if a JWT needs to be added to the response
+module.exports.respQuery = (dbResp, req, res) => { //reqToken is an optional boolean to determin if a JWT needs to be added to the response
   if (dbResp) {
-    reqToken ? res.send(dbResp.json()) : res.json(dbResp).end();
+    res.json(dbResp).end();
   } else {
     res.status(500).send('No matching entries');
   }
-
-  // if (!reqToken) { //if no token is required
-  //   dbResp ? res.json(dbResp).end() : res.status(500).send('No matching entries');
-  // } else {
-  //   var data = dbResp.dataValues.json();
-  //   data.id_token = createIdToken(data);
-  //   data.access_token = createAccessToken();
-
-  //   console.log('TOKEN REQUIRED:', data);
-  //   dbResp ? res.json(dbResp).end() : res.status(500).send('No matching entries');
-  // }
 };
 
 module.exports.respErr = (dbResp, req, res) => {
