@@ -49,8 +49,3 @@ module.exports.createAccessToken = () => {
     alg: 'HS256'
   }, priv.powerWord);
 };
-
-//DELETE BELOW
-var test = function(string, ...args) {
-  return args;
-}
