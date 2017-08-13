@@ -1,3 +1,4 @@
+'use scrict'
 //Helper functions used with the database//
 const jwt = require('jsonwebtoken'); //JSON Webtoken helper
 const priv = require('./private.js'); //sensitive data
