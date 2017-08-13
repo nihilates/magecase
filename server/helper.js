@@ -16,11 +16,11 @@ module.exports.respErr = (dbResp, req, res) => {
 };
 
 //function to parse a submitted identifier and determin it it's a username or user email
-module.exports.loginFlex = (identifier) => {
-  if (identifier.includes('@')) {
-    return 'user_email';
+module.exports.parseCreds = (creds) => {
+  if (creds.identity.includes('@')) {
+    return {user_email: creds.identity, password: creds.passwd};
   } else {
-    return 'user_name';
+    return {user_name: creds.identity, password: creds.passwd};
   }
 };
 
@@ -49,3 +49,8 @@ module.exports.createAccessToken = () => {
     alg: 'HS256'
   }, priv.powerWord);
 };
+
+//DELETE BELOW
+var test = function(string, ...args) {
+  return args;
+}

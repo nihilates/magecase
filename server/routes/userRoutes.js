@@ -17,16 +17,11 @@ module.exports = (app, db) => {
   app.get('/api/users/login', (req, res) => {
     //Find the specified entry on the users table
     let userReq = {
-      identifier: req.query.identifier,
+      identity: req.query.identity,
       passwd: req.query.password
     };
 
-    db.Users.find({where:
-      {
-        hlp.loginFlex(user.identifier): userReq.identifier,
-        password: userReq.passwd
-      }
-    }).then((user) => {
+    db.Users.find({where: hlp.parseCreds(userReq)}).then((user) => {
       hlp.respQuery(user, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
