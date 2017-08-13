@@ -36,8 +36,8 @@ module.exports.respQuery = (dbResp, req, res, reqToken) => { //reqToken is an op
     dbResp ? res.json(dbResp).end() : res.status(500).send('No matching entries');
   } else {
     var data = dbResp.dataValues;
-    data.id_token = createIdToken(dbResp.dataValues);
-    data.access_token = createAccessToken();
+    // data.id_token = createIdToken(dbResp.dataValues);
+    // data.access_token = createAccessToken();
 
     console.log('TOKEN REQUIRED:', data);
     dbResp ? res.json(dbResp).end() : res.status(500).send('No matching entries');
