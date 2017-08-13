@@ -4,16 +4,31 @@ const hlp = require('../helper');
 //API routes for the Users table
 module.exports = (app, db) => {
 
-  app.get('/api/users', (req, res) => {
+  /*Development API to check up on tables; disable in production*/
+  app.get('/api/users/getall', (req, res) => {
     //Get all entries on the user's table
     db.Users.findAll().then((users) => {
+      console.log(users);
       hlp.respQuery(users, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
   });
 
-  app.post('/api/users', (req, res) => {
+  app.get('/api/users/login', (req, res) => {
+    //Find the specified entry on the users table
+    let name = req.query.user_name;
+    let email = req.query.user_email;
+    let passwd = req.query.password;
+
+    db.Users.find({where: {username_name: name}}).then((user) => {
+      hlp.respQuery(user, req, res);
+    }).catch((err) => {
+      hlp.respErr(err, req, res);
+    });
+  });
+
+  app.post('/api/users/signup', (req, res) => {
     //Shorten the incoming data terms
     let name = req.body.user_name;
     let email = req.body.user_email;
