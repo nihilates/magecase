@@ -3,6 +3,7 @@ const hlp = require('../helper');
 
 //API routes for the Users table
 module.exports = (app, db) => {
+
   app.get('/api/users', (req, res) => {
     //Get all entries on the user's table
     db.Users.findAll().then((users) => {
@@ -10,7 +11,7 @@ module.exports = (app, db) => {
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
-  };
+  });
 
   app.post('/api/users', (req, res) => {
     //Shorten the incoming data terms
