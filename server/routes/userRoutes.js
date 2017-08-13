@@ -23,6 +23,8 @@ module.exports = (app, db) => {
     };
 
     db.Users.find({where: {user_name: user.name}}).then((user) => {
+      console.log('QUERY RESULT IS:', user);
+
       hlp.respQuery(user, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
