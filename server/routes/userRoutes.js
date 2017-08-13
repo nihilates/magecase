@@ -18,7 +18,7 @@ module.exports = (app, db) => {
     //Find the specified entry on the users table
 console.log(req.query);
 
-    db.Users.find({where: {username_name: 'nihilates'}}).then((user) => {
+    db.Users.find({where: {user_name: 'nihilates'}}).then((user) => {
       console.log(user);
       hlp.respQuery(user, req, res);
     }).catch((err) => {
