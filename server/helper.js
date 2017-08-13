@@ -15,6 +15,15 @@ module.exports.respErr = (dbResp, req, res) => {
   res.json({error: dbResp}).status(500).send;
 };
 
+//function to parse a submitted identifier and determin it it's a username or user email
+module.exports.loginFlex = (identifier) => {
+  if (identifier.includes('@')) {
+    return 'user_email';
+  } else {
+    return 'user_name';
+  }
+};
+
 //WEBTOKEN FACTORY//
 module.exports.createIdToken = (user) => {
   return jwt.sign(_.omit(user, 'password'), priv.powerWord, { expiresIn: 60*60*5 });
