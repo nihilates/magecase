@@ -17,7 +17,7 @@ module.exports = (app, db) => {
   app.get('/api/users/login', (req, res) => {
     //Find the specified entry on the users table
     let userReq = {
-      identity: req.query.identity,
+      identity: req.query.identity, //"identity" query can be either a username or email; hlp.parseCreds will determin which it is
       passwd: req.query.password
     };
 

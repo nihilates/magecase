@@ -3,12 +3,40 @@
 const jwt = require('jsonwebtoken'); //JSON Webtoken helper
 const priv = require('./private.js'); //sensitive data
 
-module.exports.respQuery = (dbResp, req, res) => {
-  if (!dbResp) {
-    res.status(500).send('No matching entries');
-  } else {
-    res.json(dbResp).end();
+/*WEBTOKEN FACTORY*/
+const createIdToken = (user) => {
+  return jwt.sign(_.omit(user, 'password'), priv.powerWord, { expiresIn: 60*60*5 });
+};
+
+const genID = () => {
+  var result = '';
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  for (var i=0; i<16; i++) {
+      result += possible.charAt(Math.floor(Math.random()*possible.length));
   }
+  return result;
+};
+
+const createAccessToken = () => {
+  return jwt.sign({
+    iss: priv.issuer,
+    aud: priv.audience,
+    exp: Math.floor(Date.now()/1000)+(60*60),
+    scope: 'full_access',
+    sub: "lalaland|gonto",
+    jti: genID(), //Unique ID for the token
+    alg: 'HS256'
+  }, priv.powerWord);
+};
+/*END OF WEBTOKEN FACTORY*/
+
+module.exports.respQuery = (dbResp, req, res, token=false) => {
+  !dbResp) ? res.status(500).send('No matching entries') : res.json(dbResp).end();
+  // if (!dbResp) {
+  //   res.status(500).send('No matching entries');
+  // } else {
+  //   res.json(dbResp).end();
+  // }
 };
 
 module.exports.respErr = (dbResp, req, res) => {
@@ -22,30 +50,4 @@ module.exports.parseCreds = (creds) => {
   } else {
     return {user_name: creds.identity, password: creds.passwd};
   }
-};
-
-//WEBTOKEN FACTORY//
-module.exports.createIdToken = (user) => {
-  return jwt.sign(_.omit(user, 'password'), priv.powerWord, { expiresIn: 60*60*5 });
-};
-
-function genID() {
-  var result = '';
-  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  for (var i=0; i<16; i++) {
-      result += possible.charAt(Math.floor(Math.random()*possible.length));
-  }
-  return result;
-};
-
-module.exports.createAccessToken = () => {
-  return jwt.sign({
-    iss: priv.issuer,
-    aud: priv.audience,
-    exp: Math.floor(Date.now()/1000)+(60*60),
-    scope: 'full_access',
-    sub: "lalaland|gonto",
-    jti: genID(), //Unique ID for the token
-    alg: 'HS256'
-  }, priv.powerWord);
 };
