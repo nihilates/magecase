@@ -30,7 +30,7 @@ const createAccessToken = () => {
 };
 /*END OF WEBTOKEN FACTORY*/
 
-module.exports.respQuery = (dbResp, req, res, token=false) => {
+module.exports.respQuery = (dbResp, req, res) => {
   !dbResp) ? res.status(500).send('No matching entries') : res.json(dbResp).end();
   // if (!dbResp) {
   //   res.status(500).send('No matching entries');
