@@ -30,12 +30,13 @@ const createAccessToken = () => {
 };
 /*END OF WEBTOKEN FACTORY*/
 
-module.exports.respQuery = (dbResp, req, res, token) => {
-  if (!token) {
-    console.log('TOKEN DETECTED');
-    !dbResp ? res.status(500).send('No matching entries') : res.json(dbResp).end();
+//Response Helpers
+module.exports.respQuery = (dbResp, req, res, reqToken) => {
+  if (!reqToken) { //if no token is required
+    dbResp ? res.json(dbResp).end() : res.status(500).send('No matching entries');
   } else {
-    !dbResp ? res.status(500).send('No matching entries') : res.json(dbResp).end();
+    console.log('TOKEN REQUIRED:', dbResp);
+    dbResp ? res.json(dbResp).end() : res.status(500).send('No matching entries');
   }
 };
 
