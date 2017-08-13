@@ -16,15 +16,19 @@ module.exports = (app, db) => {
 
   app.get('/api/users/login', (req, res) => {
     //Find the specified entry on the users table
-    let user = {
+    let userReq = {
       name: req.query.user_name,
       email: req.query.user_email,
       passwd: req.query.password
     };
 
-    db.Users.find({where: {user_name: user.name}}).then((user) => {
+    db.Users.find({where:
+      {
+        user_name: userReq.name,
+        password: userReq.passwd
+      }
+    }).then((user) => {
       console.log('QUERY RESULT IS:', user.dataValues);
-
       hlp.respQuery(user, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
