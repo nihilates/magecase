@@ -16,7 +16,7 @@ module.exports = (app, db) => {
 
   app.get('/api/users/login', (req, res) => {
     //Find the specified entry on the users table
-console.log(req);
+console.log(req.query);
 
     db.Users.find({where: {username_name: 'nihilates'}}).then((user) => {
       console.log(user);
