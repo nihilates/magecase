@@ -23,7 +23,7 @@ module.exports = (app, db) => {
     };
 
     db.Users.find({where: {user_name: user.name}}).then((user) => {
-      console.log('QUERY RESULT IS:', user);
+      console.log('QUERY RESULT IS:', user.dataValues);
 
       hlp.respQuery(user, req, res);
     }).catch((err) => {
