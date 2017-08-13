@@ -1,11 +1,12 @@
 //General Configuration//
+const priv = require('./private.js'); //sensitive data
 const Sequelize = require('sequelize');
 
 //Server Configuration
 module.exports.port = 8080;
 
 //Database Configuration
-module.exports.database = new Sequelize('magecase_db', 'root', 'rolld8', {
+module.exports.database = new Sequelize(priv.nom, priv.loc, priv.pwd, {
   host: 'localhost',
   dialect: 'mysql',
   pool: {

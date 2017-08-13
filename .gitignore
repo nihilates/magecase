@@ -3,3 +3,4 @@ android/build
 anonymous_data
 node_modules
 .DS_Store
+private.js
