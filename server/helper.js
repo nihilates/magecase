@@ -21,9 +21,9 @@ module.exports.createIdToken = (user) => {
 };
 
 function genID() {
-  let result = '';
-  let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  for (let i=0; i<16; i++) {
+  var result = '';
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  for (var i=0; i<16; i++) {
       result += possible.charAt(Math.floor(Math.random()*possible.length));
   }
   return result;
