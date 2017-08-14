@@ -47,7 +47,7 @@ module.exports.respQuery = (dbResp, req, res) => { //reqToken is an optional boo
         user,
         auth: {
           id_token: createIdToken(user),
-          access_token: createAccessToken
+          access_token: createAccessToken()
         }
       })
   } else {
