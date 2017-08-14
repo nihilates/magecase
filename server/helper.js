@@ -6,7 +6,8 @@ const priv = require('./private.js'); //sensitive data
 
 /*WEBTOKEN FACTORY*/
 const createIdToken = (user) => {
-  return jwt.sign(_.omit(user, 'password'), priv.powerWord, { expiresIn: 60*60*5 });
+  // return jwt.sign(_.omit(user, 'password'), priv.powerWord, { expiresIn: 60*60*5 });
+  return jwt.sign(_.pick(user, ['user_name','user_email']), priv.powerWord, { expiresIn: 60*60*5 });
 };
 
 const genID = () => {
