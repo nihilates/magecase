@@ -33,11 +33,15 @@ const createAccessToken = () => {
 /*Response Helpers*/
 module.exports.respQuery = (dbResp, req, res) => { //reqToken is an optional boolean to determin if a JWT needs to be added to the response
   if (dbResp) {
-    var data = dbResp.dataValues;
+    var user = dbResp.dataValues;
+    var data.tkn = {
+      id_token: createIdToken(user),
+      access_token: createAccessToken()
+    }
     console.log(data);
 
     // res.json(dbResp).end();
-    res.json(data).end();
+    res.json(dbResp).end();
   } else {
     res.status(500).send('No matching entries');
   }
