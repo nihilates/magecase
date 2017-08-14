@@ -1,6 +1,7 @@
 'use scrict'
 //Helper functions used with the database//
 const jwt = require('jsonwebtoken'); //JSON Webtoken helper
+const _ = require('lodash');
 const priv = require('./private.js'); //sensitive data
 
 /*WEBTOKEN FACTORY*/
@@ -40,7 +41,6 @@ module.exports.respQuery = (dbResp, req, res) => { //reqToken is an optional boo
     }
     console.log(data);
 
-    // res.json(dbResp).end();
     res.json(dbResp).end();
   } else {
     res.status(500).send('No matching entries');
