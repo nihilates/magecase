@@ -1,12 +1,11 @@
 'use scrict'
 //Helper functions used with the database//
+const _ = require('lodash'); //lodash for object property managemnet
 const jwt = require('jsonwebtoken'); //JSON Webtoken helper
-const _ = require('lodash');
 const priv = require('./private.js'); //sensitive data
 
 /*WEBTOKEN FACTORY*/
 const createIdToken = (user) => {
-  // return jwt.sign(_.omit(user, 'password'), priv.powerWord, { expiresIn: 60*60*5 });
   return jwt.sign(_.pick(user, ['id','user_name','user_email']), priv.powerWord, { expiresIn: 60*60*5 });
 };
 
@@ -33,16 +32,9 @@ const createAccessToken = () => {
 /*END OF WEBTOKEN FACTORY*/
 
 /*Response Helpers*/
-module.exports.respQuery = (dbResp, req, res) => { //reqToken is an optional boolean to determin if a JWT needs to be added to the response
+module.exports.respQuery = (dbResp, req, res, reqToken) => { //reqToken is an optional boolean to determin if a JWT needs to be added to the response
   if (dbResp) {
-    var data = dbResp.dataValues;
-    console.log(data);
-
-    res.status(200).send({dbResp, auth: {
-      id_token: createIdToken(dbResp.dataValues),
-      access_token: createAccessToken()
-      }
-    })
+    !reqToken ? res.status(200).send(dbResp).end() : res.status(200).send({dbResp, auth: {id_token: createIdToken(dbResp.dataValues), access_token: createAccessToken()}});
   } else {
     res.status(500).send('No matching entries');
   }
