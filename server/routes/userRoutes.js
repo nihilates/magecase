@@ -22,7 +22,7 @@ module.exports = (app, db) => {
     };
 
     db.Users.find({where: hlp.parseCreds(userReq)}).then((user) => {
-      hlp.respQuery(user, req, res, true);
+      hlp.respQuery(user, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
