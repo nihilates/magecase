@@ -42,10 +42,14 @@ module.exports.respQuery = (dbResp, req, res) => { //reqToken is an optional boo
     console.log(data);
 
     // res.json(dbResp).end();
-    res.status(201).send({user,
-      id_token: createIdToken(user),
-      access_token: createAccessToken
-    })
+    res.status(201).send(
+      {
+        user,
+        auth: {
+          id_token: createIdToken(user),
+          access_token: createAccessToken
+        }
+      })
   } else {
     res.status(500).send('No matching entries');
   }
