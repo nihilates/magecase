@@ -35,6 +35,8 @@ module.exports.respQuery = (dbResp, req, res) => { //reqToken is an optional boo
   if (dbResp) {
     console.log(dbResp.dataValues);
 
+    // res.json(dbResp).end();
+    res.text('Hi fwiend')
     res.json(dbResp).end();
   } else {
     res.status(500).send('No matching entries');
