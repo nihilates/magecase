@@ -5,12 +5,6 @@ const jwt = require('jsonwebtoken'); //JSON Webtoken helper
 const priv = require('./private.js'); //sensitive data
 
 /*WEBTOKEN FACTORY*/
-// const jwtInspect = jwt({
-//   secret: priv.powerWord,
-//   audience: priv.audience,
-//   issuer: priv.issuer
-// });
-
 const createIdToken = (user) => {
   return jwt.sign(_.pick(user, ['id','user_name','user_email']), priv.powerWord, { expiresIn: 60*60*5 });
 };
