@@ -7,7 +7,7 @@ module.exports = (app, db) => {
   /*Development API to check up on tables; disable in production*/
   app.get('/api/auth/users/getall', (req, res) => {
     //Get all entries on the user's table
-    db.Users.findAll().then((users) => {
+    db.Users.findAll().then(users => {
       hlp.respQuery(users, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
@@ -21,9 +21,9 @@ module.exports = (app, db) => {
       passwd: req.query.password
     };
 
-    db.Users.find({where: hlp.parseCreds(userReq)}).then((user) => {
+    db.Users.find({where: hlp.parseCreds(userReq)}).then(user => {
       hlp.respQuery(user, req, res, true);
-    }).catch((err) => {
+    }).catch(err => {
       hlp.respErr(err, req, res);
     });
   });
@@ -39,9 +39,13 @@ module.exports = (app, db) => {
       user_name: name,
       user_email: email,
       password: passwd
+    }).then(user => {
+      hlp.respQuery(user, req, res, true);
+    }).catch(err => {
+      hlp.respErr(err, req, res);
     });
 
-    //End the POST request
-    res.end();
+    // //End the POST request
+    // res.end();
   });
 };
