@@ -3,7 +3,9 @@ const path = require('path');
 const https = require('https');
 const morgan = require('morgan');
 const express = require('express');
+const jwt = require('express-jwt');
 const bodyParser = require('body-parser');
+const priv = require('./private.js');
 
 module.exports = (app, express, db) => {
 
@@ -15,6 +17,17 @@ module.exports = (app, express, db) => {
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: true}));
+  //Configuration for Protected Authentication Routes
+  app.use('/api/auth',
+    jwt({secret: priv.powerWord, aud: priv.audience, iss: priv.issuer}),
+    (req, res, next) => {
+      if (!req.user.iat) {
+        res.status(401).send('Authorization Failed');
+      } else {
+        next();
+      }
+    }
+  );
 
   //API calls for User Routes
   require('./routes/userRoutes.js')(app, db);

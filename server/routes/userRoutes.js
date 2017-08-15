@@ -5,7 +5,7 @@ const hlp = require('../helper');
 module.exports = (app, db) => {
 
   /*Development API to check up on tables; disable in production*/
-  app.get('/api/users/getall', (req, res) => {
+  app.get('/api/auth/users/getall', (req, res) => {
     //Get all entries on the user's table
     db.Users.findAll().then((users) => {
       hlp.respQuery(users, req, res);
@@ -22,7 +22,7 @@ module.exports = (app, db) => {
     };
 
     db.Users.find({where: hlp.parseCreds(userReq)}).then((user) => {
-      hlp.respQuery(user, req, res);
+      hlp.respQuery(user, req, res, true);
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });

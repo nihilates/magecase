@@ -5,6 +5,12 @@ const jwt = require('jsonwebtoken'); //JSON Webtoken helper
 const priv = require('./private.js'); //sensitive data
 
 /*WEBTOKEN FACTORY*/
+const jwtInspect = jwt({
+  secret: priv.powerWord,
+  audience: priv.audience,
+  issuer: priv.issuer
+});
+
 const createIdToken = (user) => {
   return jwt.sign(_.pick(user, ['id','user_name','user_email']), priv.powerWord, { expiresIn: 60*60*5 });
 };
@@ -34,14 +40,16 @@ const createAccessToken = () => {
 /*Response Helpers*/
 module.exports.respQuery = (dbResp, req, res, reqToken) => { //reqToken is an optional boolean to determin if a JWT needs to be added to the response
   if (dbResp) {
+//token isn't required? Send just the dbResp.      : Otherwise, send the dbResp and a new token pair
     !reqToken ? res.status(200).send(dbResp).end() : res.status(200).send({dbResp, auth: {id_token: createIdToken(dbResp.dataValues), access_token: createAccessToken()}});
   } else {
-    res.status(500).send('No matching entries');
+    res.status(204).send('No matching results');
   }
 };
 
 module.exports.respErr = (dbResp, req, res) => {
-  res.json({error: dbResp}).status(500).send;
+  // res.json({error: dbResp}).status(500).send;
+  res.status(500).send({error: dbResp}).end();
 };
 
 //function to parse a submitted identifier and determin it it's a username or user email
