@@ -14,7 +14,7 @@ module.exports = (app, db) => {
   });
 
   //gets a specific item type
-  app.get('/api/items/type', (req, res) => {
+  app.get('/api/auth/items/type', (req, res) => {
     let typeId = req.query.typeId;
 
     db.ItemTypes.find({where: {id: typeId}}).then(type => {
@@ -24,7 +24,7 @@ module.exports = (app, db) => {
     });
   });
 
-  app.get('/api/items/subtype', (req, res) => {
+  app.get('/api/auth/items/subtype', (req, res) => {
     let subId = req.query.subId;
 
     db.ItemSubtypes.find({where: {id: subId}}).then(type => {
