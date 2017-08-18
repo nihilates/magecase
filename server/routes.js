@@ -31,6 +31,7 @@ module.exports = (app, express, db) => {
 
   //API calls for User Routes
   require('./routes/userRoutes.js')(app, db);
+  require('./routes/characterRoutes.js')(app, db);
   require('./routes/itemRoutes.js')(app, db);
 
   //Catch-All for GET requests
