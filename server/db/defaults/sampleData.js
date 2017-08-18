@@ -25,16 +25,19 @@ module.exports.users = [
 
 module.exports.games = [
   {
+    // id: 1,
     game_name: 'Fantasy Texas',
     userId: 1,
     currencyId: 1
   },
   {
-    game_name: 'Space Texas',
+    // id: 2,
+    game_name: 'Tim\'s Campaign',
     userId: 1,
     currencyId: 1
   },
   {
+    // id: 3,
     game_name: 'Innistrad',
     userId: 2,
     currencyId: 1
@@ -51,6 +54,18 @@ module.exports.characters = [
   {
     char_name: 'Sinjun',
     userId: 2,
+    gameId: 3,
+    currencyId: 1,
+  },
+  {
+    char_name: 'Dash Manly',
+    userId: 2,
+    gameId: 2,
+    currencyId: 1,
+  },
+  {
+    char_name: 'Rick Rimshot',
+    userId: 1,
     gameId: 2,
     currencyId: 1,
   }
