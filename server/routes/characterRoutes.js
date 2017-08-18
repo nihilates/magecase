@@ -8,7 +8,7 @@ module.exports = (app, db) => {
   app.get('/api/chars/', (req, res) => {
     let userId = req.query.userId;
 
-    db.Characters.find({where: {id: userId}}).then(chars => {
+    db.Characters.find({where: {userId: userId}}).then(chars => {
       hlp.respQuery(chars, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
