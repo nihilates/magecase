@@ -5,7 +5,7 @@ const hlp = require('../helper');
 module.exports = (app, db) => {
 
   //gets a specific item type
-  app.get('/api/chars/', (req, res) => {
+  app.get('/api/chars', (req, res) => {
     let userId = req.query.userId;
 
     db.Characters.find({where: {userId: userId}}).then(chars => {
