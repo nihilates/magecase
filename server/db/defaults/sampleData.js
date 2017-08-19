@@ -41,6 +41,12 @@ module.exports.games = [
     game_name: 'Innistrad',
     userId: 2,
     currencyId: 1
+  },
+  {
+    id: 4,
+    game_name: 'Laser Dragons',
+    userId: 2,
+    currencyId: 1
   }
 ];
 
