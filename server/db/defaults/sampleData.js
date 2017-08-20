@@ -77,6 +77,36 @@ module.exports.characters = [
   }
 ];
 
+module.exports.currencySystems = [
+  {
+    // id: 3, //starts at 3 because there are already 2 non-custom systems
+    system_name: 'Innistrad',
+    is_custom: true,
+    userId: 2, //user ID for "nihilates" account
+  }
+];
+
+module.exports.currencyUnits = [
+  {
+  // id: 6, //starts at 6 because there already exist several currencies on the table
+    unit_name: 'Pence',
+    unit_value: 0.01,
+    currencyId: 3, //these belong to the Innistrad system
+  },
+  {
+  // id: 7,
+    unit_name: 'Mark',
+    unit_value: 0.1,
+    currencyId: 3,
+  },
+  {
+  // id: 8,
+    unit_name: 'Sovereign',
+    unit_value: 1,
+    currencyId: 3,
+  },
+];
+
 module.exports.inventories = [
   //Sinjun's Inventory
   {
