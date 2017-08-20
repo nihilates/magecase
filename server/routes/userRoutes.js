@@ -14,6 +14,15 @@ module.exports = (app, db) => {
     });
   });
 
+  app.get('/api/users/getall', (req, res) => {
+    //Get all entries on the user's table
+    db.Users.findAll().then(users => {
+      hlp.respQuery(users, req, res);
+    }).catch((err) => {
+      hlp.respErr(err, req, res);
+    });
+  });
+
   app.get('/api/users/login', (req, res) => {
     //Find the specified entry on the users table
     let userReq = {
