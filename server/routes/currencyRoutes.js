@@ -13,6 +13,7 @@ module.exports = (app, db) => {
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
+  });
 
   app.get('/api/currencyunits', (req, res) => {
     let currencyId = req.query.currencyId;
