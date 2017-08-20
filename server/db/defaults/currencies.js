@@ -4,9 +4,11 @@
 //Currency Systems
 module.exports.systems = [
   {
+    // id: 1,
     system_name: 'D&D Fifth Edition'
   },
   {
+    // id: 2,
     system_name: 'Pathfinder'
   }
 ];
@@ -18,26 +20,31 @@ const fifthEditionId = 1;
 module.exports.units = [
   //Fifth Edition
   {
+    // id: 1,
     unit_name: 'Copper',
     unit_value: 0.01,
     currencyId: fifthEditionId
   },
   {
+    // id: 2,
     unit_name: 'Silver',
     unit_value: 0.1,
     currencyId: fifthEditionId
   },
   {
+    // id: 3,
     unit_name: 'Electrum',
     unit_value: 0.5,
     currencyId: fifthEditionId
   },
   {
+    // id: 4,
     unit_name: 'Gold',
     unit_value: 1,
     currencyId: fifthEditionId
   },
   {
+    // id: 5,
     unit_name: 'Platinum',
     unit_value: 10,
     currencyId: fifthEditionId
