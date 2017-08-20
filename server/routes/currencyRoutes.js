@@ -23,5 +23,4 @@ module.exports = (app, db) => {
       hlp.respErr(err, req, res);
     });
   });
-  });
 };
