@@ -17,12 +17,12 @@ module.exports = (app, db) => {
 
   app.post('/api/chars/create', (req, res) => {
     let userId = req.body.userId;
-    let charName = req.body.character_name;
+    let char_name = req.body.char_name;
     let currencyId = req.body.currencyId;
 
     db.Characters.create({
       userId: userId,
-      character_name: charName,
+      char_name: char_name,
       currencyId: currencyId
     }).then(character => {
       hlp.respQuery(character, req, res);

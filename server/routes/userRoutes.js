@@ -5,7 +5,7 @@ const hlp = require('../helper');
 module.exports = (app, db) => {
 
   /*Development API to check up on tables; disable in production*/
-  app.get('/api/auth/users/getall', (req, res) => {
+  app.get('/api/users/getall', (req, res) => {
     //Get all entries on the user's table
     db.Users.findAll().then(users => {
       hlp.respQuery(users, req, res);
@@ -14,7 +14,7 @@ module.exports = (app, db) => {
     });
   });
 
-  app.get('/api/users/getall', (req, res) => {
+  app.get('/api/auth/users/getall', (req, res) => {
     //Get all entries on the user's table
     db.Users.findAll().then(users => {
       hlp.respQuery(users, req, res);
