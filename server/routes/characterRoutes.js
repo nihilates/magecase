@@ -22,6 +22,7 @@ module.exports = (app, db) => {
 
     db.Characters.create({
       userId: userId,
+      char_name: char_name,
       currencyId: currencyId
     }).then(character => {
       hlp.respQuery(character, req, res);
