@@ -12,7 +12,7 @@ module.exports = (app, db) => {
 
       entries.forEach(entry => {
         db.Items.find({where: {id: entry.itemId}}).then(item => {
-          entry.name = item.dataValues.item_name;
+          entry.dataValues.name = item.dataValues.item_name;
           console.log(item.dataValues)
         })
       });
