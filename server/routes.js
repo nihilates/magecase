@@ -35,6 +35,7 @@ module.exports = (app, express, db) => {
   require('./routes/gameRoutes.js')(app, db);
   require('./routes/itemRoutes.js')(app, db);
   require('./routes/currencyRoutes.js')(app, db);
+  require('./routes/inventoryRoutes.js')(app, db);
 
   //Catch-All for GET requests
   app.get('/', (req, res) => {
