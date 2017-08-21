@@ -14,4 +14,20 @@ module.exports = (app, db) => {
       hlp.respErr(err, req, res);
     });
   });
+
+  app.post('/api/games/create', (req, res) => {
+    let userId = req.body.userId;
+    let game_name = req.body.game_name;
+    let currencyId = req.body.currencyId;
+
+    db.Games.create({
+      userId: userId,
+      game_name: game_name,
+      currencyId: currencyId
+    }).then(game => {
+      hlp.respQuery(game, req, res);
+    }).catch(err => {
+      hlp.respErr(err, req, res);
+    })
+  });
 };
