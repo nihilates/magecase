@@ -13,7 +13,7 @@ module.exports = (app, db) => {
       entries.forEach(entry => {
         db.Items.find({where: {id: entry.itemId}}).then(item => {
           entry.name = item.item_name;
-          console.log(item.json())
+          console.log(item.dataValues)
         })
       });
 
