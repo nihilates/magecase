@@ -12,7 +12,8 @@ module.exports = (app, db) => {
 
       entries.forEach(entry => {
         db.Items.find({where: {id: entry.itemId}}).then(item => {
-          entry.name = item[0].item_name;
+          entry.name = item.item_name;
+          console.log(item)
         })
       });
 
