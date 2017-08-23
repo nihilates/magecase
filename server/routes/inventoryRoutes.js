@@ -19,6 +19,7 @@ module.exports = (app, db) => {
 
   app.put('/api/inventory/update', (req, res, next) => {
     let result = req;
-    res.status(200).send(result.json())
+    console.log(result)
+    res.status(200).send('Recieved');
   })
 };
