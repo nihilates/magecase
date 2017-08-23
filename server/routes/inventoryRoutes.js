@@ -18,11 +18,25 @@ module.exports = (app, db) => {
   });
 
   app.put('/api/inventory/update/:charId', (req, res) => {
-    let result = {
-      params: req.params,
-      body: req.body
-    };
-    console.log('LOGGING RESULT:', result)
-    res.status(200).send('Received');
-  })
+    // let result = {
+    //   params: req.params,
+    //   body: req.body
+    // };
+    // console.log('LOGGING RESULT:', result)
+    // res.status(200).send('Received');
+    let charId = req.params.charId;
+
+    db.Inventory.find({where: {charId: charId}}).then(inventory => {
+      if (!inventory) {
+        res.status(500).send('Inventory Not Found');
+      } else {
+        db.Inventory.update({
+          count: req.body.count
+        }, {where: {id: req.body.id}});
+        hlp.respQuery(inventory, req, res);
+      }
+    }).catch((err) => {
+      hlp.respErr(err, req, res);
+    });
+  });
 };
