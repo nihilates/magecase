@@ -17,4 +17,15 @@ module.exports = (app, db) => {
     });
   });
 
+  app.put('/api/inventory/:charId', (req, res, next) => {
+    let charId = req.params.charId;
+
+    if (!character) {
+      res.status(500).send('No such character exists')
+    } else {
+      res.send('Success!');
+    }
+  }).catch(err => {
+    helpers.respErr(err, req, res);
+  })
 };
