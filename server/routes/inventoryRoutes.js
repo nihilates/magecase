@@ -17,8 +17,8 @@ module.exports = (app, db) => {
     });
   });
 
-  app.put('/api/inventory/update/:charId', (req, res) => {
-    let charId = req.params.charId;
+  app.put('/api/inventory/update/', (req, res) => {
+    let charId = req.body.charId;
     console.log('CharID is:',charId)
     console.log('Inventory ID is:',req.body.id)
     console.log('Item Count is:',req.body.count)
