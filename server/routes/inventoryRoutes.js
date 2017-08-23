@@ -18,12 +18,6 @@ module.exports = (app, db) => {
   });
 
   app.put('/api/inventory/update', (req, res, next) => {
-    let charId = req.params.charId;
-
-    if (!charId) {
-      res.status(500).send(JSON.stringify(req.params))
-    } else {
-      res.send('Success!');
-    }
+    res.send(JSON.stringify(req))
   })
 };
