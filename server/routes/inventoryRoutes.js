@@ -20,7 +20,7 @@ module.exports = (app, db) => {
   app.post('/api/inventory/add', (req, res) => {
     let charId = req.body.charId;
     let itemId = req.body.itemId;
-    let count = req.body.itemId;
+    let count = req.body.count;
 
     db.Inventory.create({
       charId: charId,
@@ -49,4 +49,10 @@ module.exports = (app, db) => {
       hlp.respErr(err, req, res);
     });
   });
+
+  app.delete('/api/inventory/remove', (req, res) => {
+    console.log(req)
+    res.status(200).send('Recieved');
+  })
+
 };
