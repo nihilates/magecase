@@ -21,7 +21,7 @@ module.exports = (app, db) => {
     let charId = req.params.charId;
 
     if (!charId) {
-      res.status(500).send('No such character exists')
+      res.status(500).send(req.params)
     } else {
       res.send('Success!');
     }
