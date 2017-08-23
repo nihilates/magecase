@@ -18,6 +18,6 @@ module.exports = (app, db) => {
   });
 
   app.put('/api/inventory/update', (req, res, next) => {
-    res.send(JSON.stringify(req))
+    res.send(req)
   })
 };
