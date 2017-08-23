@@ -17,9 +17,12 @@ module.exports = (app, db) => {
     });
   });
 
-  app.put('/api/inventory/:update', (req, res) => {
-    let result = req.params;
-    console.log('LOGGING RESULT:',result)
-    res.status(200).send(result);
+  app.put('/api/inventory/update/:charId', (req, res) => {
+    let result = {
+      params: req.params,
+      body: req.body
+    };
+    console.log('LOGGING RESULT:', result)
+    res.status(200).send('Received');
   })
 };
