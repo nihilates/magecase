@@ -25,7 +25,5 @@ module.exports = (app, db) => {
     } else {
       res.send('Success!');
     }
-  }).catch(err => {
-    helpers.respErr(err, req, res);
   })
 };
