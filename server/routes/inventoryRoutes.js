@@ -17,11 +17,24 @@ module.exports = (app, db) => {
     });
   });
 
-  app.put('/api/inventory/update/', (req, res) => {
+  app.post('/api/inventory/add', (req, res) => {
     let charId = req.body.charId;
-    console.log('CharID is:',charId)
-    console.log('Inventory ID is:',req.body.id)
-    console.log('Item Count is:',req.body.count)
+    let itemId = req.body.itemId;
+    let count = req.body.itemId;
+
+    db.Inventory.create({
+      charId: charId,
+      itemId: itemId,
+      count: count
+    }).then(entry => {
+      hlp.respQuery(entry, req, res);
+    }).catch(err => {
+      hlp.respErr(err, req, res);
+    });
+  });
+
+  app.put('/api/inventory/update', (req, res) => {
+    let charId = req.body.charId;
 
     db.Inventory.find({where: {charId: charId}}).then(inventory => {
       if (!inventory) {
