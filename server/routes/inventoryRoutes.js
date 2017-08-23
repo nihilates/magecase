@@ -18,13 +18,10 @@ module.exports = (app, db) => {
   });
 
   app.put('/api/inventory/update/:charId', (req, res) => {
-    // let result = {
-    //   params: req.params,
-    //   body: req.body
-    // };
-    // console.log('LOGGING RESULT:', result)
-    // res.status(200).send('Received');
     let charId = req.params.charId;
+    console.log('CharID is:',charId)
+    console.log('Inventory ID is:',req.body.id)
+    console.log('Item Count is:',req.body.count)
 
     db.Inventory.find({where: {charId: charId}}).then(inventory => {
       if (!inventory) {
