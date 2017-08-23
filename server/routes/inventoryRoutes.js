@@ -18,6 +18,7 @@ module.exports = (app, db) => {
   });
 
   app.put('/api/inventory/update', (req, res, next) => {
-    res.status(200).send('Result')
+    let result = req;
+    res.status(200).send(typeof result)
   })
 };
