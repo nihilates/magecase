@@ -17,7 +17,7 @@ module.exports = (app, db) => {
     });
   });
 
-  app.patch('/api/inventory/:update', (req, res, next) => {
+  app.put('/api/inventory/:update', (req, res) => {
     let result = req;
     console.log(result)
     res.status(200).send('Recieved');
