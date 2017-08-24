@@ -54,12 +54,15 @@ module.exports = (app, db) => {
     let charId = req.body.charId;
     let id = req.body.id;
 
-    db.Inventory.destroy({where: {$and: [{id: id}, {charId: charId}]}})
-    .then(death => {
-      hlp.respQuery(death, req, res)
-    }).catch(err => {
-      hlp.respErr(err, req, res);
-    })
+    console.log('CharId:', charId)
+    console.log('id:', id)
+
+    // db.Inventory.destroy({where: {$and: [{id: id}, {charId: charId}]}})
+    // .then(death => {
+    //   hlp.respQuery(death, req, res)
+    // }).catch(err => {
+    //   hlp.respErr(err, req, res);
+    // })
   });
 
 };
