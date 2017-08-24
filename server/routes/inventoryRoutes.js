@@ -61,11 +61,3 @@ module.exports = (app, db) => {
   });
 
 };
-
-
-    // db.Inventory.destroy({where: {$and: [{id: id}, {charId: charId}]}})
-    // .then(death => {
-    //   hlp.respQuery(death, req, res)
-    // }).catch(err => {
-    //   hlp.respErr(err, req, res);
-    // })
