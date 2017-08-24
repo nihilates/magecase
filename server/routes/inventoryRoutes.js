@@ -45,14 +45,21 @@ module.exports = (app, db) => {
         }, {where: {id: req.body.id}});
         hlp.respQuery(inventory, req, res);
       }
-    }).catch((err) => {
+    }).catch(err => {
       hlp.respErr(err, req, res);
     });
   });
 
   app.delete('/api/inventory/remove', (req, res) => {
-    console.log(req.body)
-    res.status(200).send('Recieved');
-  })
+    let charId = req.body.charId;
+    let id = req.body.id;
+
+    db.Inventory.destroy({where: {$and: [{id: id}, {charId: charId}]}})
+    .then(death => {
+      hlp.respQuery(death, req, res)
+    }).catch(err => {
+      hlp.respErr(err, req, res);
+    })
+  });
 
 };
