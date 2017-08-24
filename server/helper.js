@@ -37,7 +37,7 @@ module.exports.respQuery = (dbResp, req, res, reqToken) => { //reqToken is an op
     var userData = _.pick(dbResp.dataValues, ['id', 'user_name', 'user_email', 'user_icon', 'premium_status']);
 //token isn't required? Send just the dbResp.      : Otherwise, send the dbResp and a new token pair
     // !reqToken ? res.status(200).send(dbResp).end() : res.status(200).send({dbResp, auth: {id_token: createIdToken(dbResp.dataValues), access_token: createAccessToken()}});
-    !reqToken ? res.status(200).send(dbResp).end() : res.status(200).send({userData, auth: {id_token: createIdToken(userData), access_token: createAccessToken()}});
+    !reqToken ? res.sendStatus(200).send(dbResp).end() : res.sendStatus(200).send({userData, auth: {id_token: createIdToken(userData), access_token: createAccessToken()}});
   } else {
     res.sendStatus(204).send('No matching results');
   }
