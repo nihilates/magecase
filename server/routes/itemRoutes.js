@@ -5,9 +5,10 @@ const hlp = require('../helper');
 module.exports = (app, db) => {
 
   //gets a list of all items on the items table; this will change to be more specific when we go live
-  app.get('/api/items', (req, res) => {
+  app.get('/api/items/all', (req, res) => {
     db.Items.findAll({
-      // include: {model: db.ItemTypes}
+      where: {is_custom: false},
+      include: {model: db.ItemTypes}
     }).then(items => {
       hlp.respQuery(items, req, res);
     }).catch((err) => {
