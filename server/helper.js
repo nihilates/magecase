@@ -37,15 +37,15 @@ module.exports.respQuery = (dbResp, req, res, reqToken) => { //reqToken is an op
     var userData = _.pick(dbResp.dataValues, ['id', 'user_name', 'user_email', 'user_icon', 'premium_status']);
 //token isn't required? Send just the dbResp.      : Otherwise, send the dbResp and a new token pair
     // !reqToken ? res.status(200).send(dbResp).end() : res.status(200).send({dbResp, auth: {id_token: createIdToken(dbResp.dataValues), access_token: createAccessToken()}});
-    !reqToken ? res.send(dbResp).end() : res.send({userData, auth: {id_token: createIdToken(userData), access_token: createAccessToken()}});
+    !reqToken ? res.status('200').send(dbResp).end() : res.status('200').send({userData, auth: {id_token: createIdToken(userData), access_token: createAccessToken()}});
   } else {
-    res.send('No matching results');
+    res.status('204').send('No matching results');
   }
 };
 
 module.exports.respErr = (dbResp, req, res) => {
   // res.json({error: dbResp}).status(500).send;
-  res.send({error: dbResp}).end();
+  res.status('500').send({error: dbResp}).end();
 };
 
 //function to parse a submitted identifier and determin it it's a username or user email
