@@ -6,7 +6,9 @@ module.exports = (app, db) => {
 
   //gets a list of all items on the items table; this will change to be more specific when we go live
   app.get('/api/auth/items', (req, res) => {
-    db.Items.findAll().then(items => {
+    db.Items.findAll({
+      include: {model: db.ItemTypes}
+    }).then(items => {
       hlp.respQuery(items, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
