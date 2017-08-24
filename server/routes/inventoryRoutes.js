@@ -53,6 +53,6 @@ module.exports = (app, db) => {
   app.delete('/api/inventory/remove', (req, res) => {
     console.log(req)
     res.status(200).send('Recieved');
-  })
+  });
 
 };
