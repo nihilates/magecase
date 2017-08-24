@@ -53,13 +53,9 @@ module.exports = (app, db) => {
   app.delete('/api/inventory/remove', (req, res) => {
     let charId = req.body.charId;
     let id = req.body.id;
-    console.log('LOOK HERE FRIEND', req)
-    console.log('THIS IS A THING', req.body)
 
     db.Inventory.destroy({where: {$and: [{id: id}, {charId: charId}]}})
-    .then(death => {
-      hlp.respQuery(death, req, res)
-    }).catch(err => {
+    .catch(err => {
       hlp.respErr(err, req, res);
     })
   });
