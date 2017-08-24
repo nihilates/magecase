@@ -51,8 +51,23 @@ module.exports = (app, db) => {
   });
 
   app.delete('/api/inventory/remove', (req, res) => {
-    console.log(req)
-    res.status(200).send('Recieved');
+    let id = req.body.id;
+    let charId = req.body.charId;
+
+    db.Inventory.destroy({where: {$and: [{id: id}, {charId: charId}]}})
+    .then(death => {
+      hlp.respQuery(death, req, res)
+    }).catch(err => {
+      hlp.respErr(err, req, res);
+    })
   });
 
 };
+
+
+    // db.Inventory.destroy({where: {$and: [{id: id}, {charId: charId}]}})
+    // .then(death => {
+    //   hlp.respQuery(death, req, res)
+    // }).catch(err => {
+    //   hlp.respErr(err, req, res);
+    // })
