@@ -54,7 +54,7 @@ module.exports = (app, db) => {
     let charId = req.body.charId;
     let id = req.body.id;
 
-    console.log('LOOK HERE FRIEND', req)
+    console.log('LOOK HERE FRIEND', req.query)
 
     db.Inventory.destroy({where: {$and: [{id: id}, {charId: charId}]}})
     .then(death => {
