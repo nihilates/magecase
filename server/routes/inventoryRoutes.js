@@ -51,10 +51,10 @@ module.exports = (app, db) => {
   });
 
   app.delete('/api/inventory/remove', (req, res) => {
-    let charId = req.body.charId;
-    let id = req.body.id;
+    let charId = req.query.charId;
+    let id = req.query.id;
 
-    console.log('LOOK HERE FRIEND', req.query)
+    console.log('LOOK HERE FRIEND', req)
 
     db.Inventory.destroy({where: {$and: [{id: id}, {charId: charId}]}})
     .then(death => {
