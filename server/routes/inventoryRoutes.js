@@ -51,8 +51,10 @@ module.exports = (app, db) => {
   });
 
   app.delete('/api/inventory/remove', (req, res) => {
-    let charId = req.body.charId;
-    let id = req.body.id;
+    // let charId = req.body.charId;
+    // let id = req.body.id;
+
+    console.log(req.body)
 
     console.log('CharId:', charId)
     console.log('id:', id)
