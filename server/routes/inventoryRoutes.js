@@ -54,8 +54,9 @@ module.exports = (app, db) => {
     let charId = req.body.charId;
     let id = req.body.id;
 
-    db.Inventory.destroy({where: {$and: [{id: id}, {charId: charId}]}})
-    .catch(err => {
+    db.Inventory.destroy({where: {$and: [{id: id}, {charId: charId}]}}).then(() => {
+      hlp.respQuery('Success', req, res);
+    }).catch(err => {
       hlp.respErr(err, req, res);
     })
   });
