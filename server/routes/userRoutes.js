@@ -53,8 +53,5 @@ module.exports = (app, db) => {
     }).catch(err => {
       hlp.respErr(err, req, res);
     });
-
-    // //End the POST request
-    // res.end();
   });
 };
