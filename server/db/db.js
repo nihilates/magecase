@@ -160,7 +160,7 @@ module.exports.syncTables = (force, schema) => {
   // module.exports.Items.belongsTo(module.exports.ItemTypes, {as: 'type'});
   // module.exports.Items.belongsTo(module.exports.ItemSubtypes, {as: 'subType'});
   // module.exports.Items.belongsTo(module.exports.Users);
-  module.exports.Items.belongsTo(module.exports.ItemTypes, {foreignKey: 'id'});
+  // module.exports.Items.belongsTo(module.exports.ItemTypes, {foreignKey: 'id'});
   // module.exports.Items.belongsTo(module.exports.ItemSubtypes, {as: 'subType'});
   // module.exports.Items.belongsTo(module.exports.Users);
   //Asset Types Table Foreign-Keys
