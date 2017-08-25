@@ -8,7 +8,7 @@ module.exports = (app, db) => {
   app.get('/api/items/all', (req, res) => {
     db.Items.findAll({
       where: {is_custom: false},
-      include: {model: db.ItemTypes}
+      // include: {model: db.ItemTypes}
     }).then(items => {
       hlp.respQuery(items, req, res);
     }).catch((err) => {
