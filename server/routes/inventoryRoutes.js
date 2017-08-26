@@ -11,7 +11,7 @@ module.exports = (app, db) => {
       where: {charId: charId},
       // include: db.Items
       include: [
-        {model: db.Items, include: [db.ItemTypes, db.ItemSubTypes]}
+        {model: db.Items, include: [db.ItemTypes]}
       ]}).then(entries => {
       hlp.respQuery(entries, req, res);
     }).catch((err) => {
