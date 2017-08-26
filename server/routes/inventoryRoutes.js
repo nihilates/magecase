@@ -9,8 +9,10 @@ module.exports = (app, db) => {
 
     db.Inventory.findAll({
       where: {charId: charId},
-      include: db.Items
-    }).then(entries => {
+      // include: db.Items
+      include: [
+        {model: db.Items, include: [db.ItemTypes]}
+      ]}).then(entries => {
       hlp.respQuery(entries, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
