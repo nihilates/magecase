@@ -25,14 +25,4 @@ module.exports = (app, db) => {
       hlp.respErr(err, req, res);
     });
   });
-
-  // app.get('/api/currencyunits', (req, res) => {
-  //   let currencyId = req.query.currencyId;
-
-  //   db.CurrencyUnits.findAll({where: {currencyId: currencyId}}).then(unit => {
-  //     hlp.respQuery(unit, req, res);
-  //   }).catch((err) => {
-  //     hlp.respErr(err, req, res);
-  //   });
-  // });
 };
