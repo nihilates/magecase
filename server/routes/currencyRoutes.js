@@ -16,6 +16,7 @@ module.exports = (app, db) => {
     });
   });
 
+  //gets all units that belong to a currency system and returns them, also including the system's data
   app.get('/api/currencyunits', (req, res) => {
     let currencyId = req.query.currencyId;
 
