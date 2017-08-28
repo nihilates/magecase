@@ -27,7 +27,7 @@ module.exports = (app, db) => {
   app.get('/api/items/subtypes', (req, res) => {
     let typeId = req.query.typeId;
 
-    db.ItemTypes.findAll({where: {itemTypeId: typeId}}).then(type => {
+    db.ItemSubtypes.findAll({where: {itemTypeId: typeId}}).then(type => {
       hlp.respQuery(type, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
