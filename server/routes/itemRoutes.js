@@ -15,8 +15,8 @@ module.exports = (app, db) => {
 
   //get all items that match either the desired item type or item sub type
   app.get('/api/items/oftype', (req, res) => {
-    let typeId = req.query.typeId;
-    let subTypeId = req.query.subTypeId;
+    let typeId = req.query.typeId || 1;
+    let subTypeId = req.query.subTypeId || 1;
 
     db.Items.findAll({where: {$or: [{typeId: typeId}, {subbTypeId: subTypeId}] }}).then(type => {
       hlp.respQuery(type, req, res);
