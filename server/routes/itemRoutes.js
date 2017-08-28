@@ -13,21 +13,31 @@ module.exports = (app, db) => {
     });
   });
 
-  //gets a specific item type
-  app.get('/api/items/type', (req, res) => {
-    let typeId = req.query.typeId;
+  //get all item types
+  app.get('/api/items/types', (req, res) => {
 
-    db.ItemTypes.find({where: {id: typeId}}).then(type => {
+    db.ItemTypes.findAll().then(type => {
       hlp.respQuery(type, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
   });
 
-  app.get('/api/items/subtype', (req, res) => {
+  //get all item subtypes that belong to a given itemtype
+  app.get('/api/items/subtypes', (req, res) => {
+    let typeId = req.query.typeId;
+
+    db.ItemTypes.findAll({where: {itemTypeId: typeId}}).then(type => {
+      hlp.respQuery(type, req, res);
+    }).catch((err) => {
+      hlp.respErr(err, req, res);
+    });
+  });
+
+  app.get('/api/items/alltypes', (req, res) => {
     let subId = req.query.subId;
 
-    db.ItemSubtypes.find({where: {id: subId}, include: [{model: db.ItemTypes}]}).then(type => {
+    db.ItemSubtypes.find({where: {id: subId}, include: db.ItemTypes}).then(type => {
       hlp.respQuery(type, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
