@@ -34,7 +34,8 @@ module.exports = (app, db) => {
     });
   });
 
-  app.get('/api/items/alltypes', (req, res) => {
+  //gets a single item subtype and includes its main type in the body of the object
+  app.get('/api/items/typeset', (req, res) => {
     let subId = req.query.subId;
 
     db.ItemSubtypes.find({where: {id: subId}, include: db.ItemTypes}).then(type => {
