@@ -13,6 +13,18 @@ module.exports = (app, db) => {
     });
   });
 
+  //get all items that match either the desired item type or item sub type
+  app.get('/api/items/oftype', (req, res) => {
+    let typeId = req.query.typeId;
+    let subTypeId = req.query.subTypeId;
+
+    db.Items.findAll({where: {$or: [{typeId: typeId}, {subbTypeId: subTypeId}] }}).then(type => {
+      hlp.respQuery(type, req, res);
+    }).catch((err) => {
+      hlp.respErr(err, req, res);
+    });
+  });
+
   //get all item types
   app.get('/api/items/types', (req, res) => {
 
