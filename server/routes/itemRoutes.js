@@ -18,7 +18,7 @@ module.exports = (app, db) => {
     let typeId = req.query.typeId || 1;
     let subTypeId = req.query.subTypeId || 1;
 
-    db.Items.findAll({where: {$or: [{typeId: typeId}, {subbTypeId: subTypeId}] }}).then(type => {
+    db.Items.findAll({where: {$or: [{typeId: typeId}, {subTypeId: subTypeId}] }}).then(type => {
       hlp.respQuery(type, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
