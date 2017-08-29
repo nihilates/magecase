@@ -9,7 +9,6 @@ module.exports = (app, db) => {
 
     db.Inventory.findAll({
       where: {charId: charId},
-      // include: db.Items
       include: [
         {model: db.Items, include: [db.ItemTypes, db.ItemSubtypes]}
       ]}).then(entries => {
@@ -36,6 +35,7 @@ module.exports = (app, db) => {
   });
 
   app.put('/api/inventory/update', (req, res) => {
+    console.log('CHECKING...', req.body)
     let charId = req.body.charId;
 
     db.Inventory.find({where: {charId: charId}}).then(inventory => {

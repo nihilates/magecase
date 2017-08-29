@@ -18,8 +18,8 @@ module.exports = (app, db) => {
     let typeId = req.query.typeId;
     let subTypeId = req.query.subTypeId;
 
-    // db.Items.findAll({where: {typeId: typeId}}).then(type => {
     db.Items.findAll(
+      //if a subType is supplied, prioritize that query. Otherwise, attempt a typeId query. If none are supplied, returns empty array
       (subTypeId ? {where: {subTypeId: subTypeId}} : {where: {typeId: typeId}})
       ).then(type => {
       hlp.respQuery(type, req, res);
