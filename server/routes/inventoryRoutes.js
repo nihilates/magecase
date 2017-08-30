@@ -35,16 +35,12 @@ module.exports = (app, db) => {
   });
 
   app.put('/api/inventory/update', (req, res) => {
-    console.log('***CHECKING...', req.body)
     let charId = req.body.charId;
 
     db.Inventory.find({where: {charId: charId}}).then(inventory => {
-      console.log('***CHECKED INVENTORY')
       if (!inventory) {
-        console.log('***NO INVENTORY FOUND')
         res.status(500).send('Inventory Not Found');
       } else {
-        console.log('***INVENTORY FOUND')
         db.Inventory.update({
           count: req.body.count
         }, {where: {id: req.body.id}});
