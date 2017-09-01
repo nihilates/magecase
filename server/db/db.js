@@ -163,7 +163,7 @@ module.exports.syncTables = (force, schema) => {
   module.exports.Games.belongsTo(module.exports.Users);
   module.exports.Games.belongsTo(module.exports.CurrencySystems, {as: 'currency'});
   //Currency Systems Table Foreign-Keys
-  module.exports.CurrencySystems.hasMany(module.exports.CurrencyUnits, {as: 'currency'});
+  module.exports.CurrencySystems.hasMany(module.exports.CurrencyUnits, {as: 'currencyId'});
 
   module.exports.CurrencySystems.belongsTo(module.exports.Users);
   //Currency Units Table Foreign-Keys
