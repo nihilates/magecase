@@ -9,8 +9,8 @@ module.exports = (app, db) => {
     let userId = req.query.userId;
 
     db.CurrencySystems.findAll({
-      where: {$or: [{is_custom: false}, {userId: userId}]},
-      include: db.CurrencyUnits
+      // where: {$or: [{is_custom: false}, {userId: userId}]},
+      include: [db.CurrencyUnits]
     })
     .then(system => {
       hlp.respQuery(system, req, res);
