@@ -48,7 +48,6 @@ module.exports.syncTables = (force, schema) => {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
     unit_name: {type: Sequelize.STRING},
     unit_value: {type: Sequelize.FLOAT},
-    // currencySystemId: {type: Sequelize.INTEGER, allowNull: false} //Foreign-Key, CurrencySystems table
     currencySystemId: {type: Sequelize.INTEGER, allowNull: false} //Foreign-Key, CurrencySystems table
   }, {timestamps: false});
 
@@ -72,8 +71,8 @@ module.exports.syncTables = (force, schema) => {
   module.exports.Items = schema.define('items', {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
     item_name: {type: Sequelize.STRING},
-    typeId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, ItemTypes table
-    subTypeId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, ItemSubtypes table
+    itemTypeId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, ItemTypes table
+    itemSubTypeId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, ItemSubtypes table
     value: {type: Sequelize.FLOAT, defaultValue: 0},
     weight: {type: Sequelize.FLOAT, defaultValue: 0},
     description: {type: Sequelize.STRING},
@@ -157,7 +156,7 @@ module.exports.syncTables = (force, schema) => {
   //Characters Table Foreign-Keys
   module.exports.Characters.hasMany(module.exports.Inventory);
 
-  // module.exports.Characters.belongsTo(module.exports.Users);
+  module.exports.Characters.belongsTo(module.exports.Users);
   module.exports.Characters.belongsTo(module.exports.Games, {foreignKey: 'gameId'});
   module.exports.Characters.belongsTo(module.exports.CurrencySystems, {foreignKey: 'currencySystemId'});
   //Games Table Foreign-Keys
@@ -172,7 +171,10 @@ module.exports.syncTables = (force, schema) => {
   //Item Subtypes Table Foreign-Keys
   module.exports.ItemSubtypes.belongsTo(module.exports.ItemTypes, {foreignKey: 'itemTypeId'});
   //Items Table Foreign-Keys
-  module.exports.Items.belongsTo(module.exports.ItemTypes, {foreignKey: 'typeId'});
+  module.exports.Items.hasOne(module.exports.ItemTypes);
+  module.exports.Items.hasOne(module.exports.ItemSubtypes);
+
+  // module.exports.Items.belongsTo(module.exports.ItemTypes, {foreignKey: 'typeId'});
   module.exports.Items.belongsTo(module.exports.ItemSubtypes, {foreignKey: 'subTypeId'});
   module.exports.Items.belongsTo(module.exports.Users, {foreignKey: 'userId'});
   //Asset Types Table Foreign-Keys
