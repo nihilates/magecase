@@ -169,10 +169,10 @@ module.exports.syncTables = (force, schema) => {
   //Currency Units Table Foreign-Keys
   module.exports.CurrencyUnits.belongsTo(module.exports.CurrencySystems, {foreignKey: 'currencySystemId'});
   //Item Subtypes Table Foreign-Keys
-  // module.exports.ItemSubtypes.belongsTo(module.exports.ItemTypes, {foreignKey: 'itemTypeId'});
+  module.exports.ItemSubtypes.belongsTo(module.exports.ItemTypes, {foreignKey: 'itemTypeId'});
   //Items Table Foreign-Keys
-  module.exports.Items.hasOne(module.exports.ItemTypes);
-  module.exports.Items.hasOne(module.exports.ItemSubtypes);
+  // module.exports.Items.hasOne(module.exports.ItemTypes);
+  // module.exports.Items.hasOne(module.exports.ItemSubtypes);
 
   // module.exports.Items.belongsTo(module.exports.ItemTypes, {foreignKey: 'typeId'});
   module.exports.Items.belongsTo(module.exports.ItemSubtypes, {foreignKey: 'subTypeId'});
