@@ -8,7 +8,12 @@ module.exports = (app, db) => {
   app.get('/api/chars', (req, res) => {
     let userId = req.query.userId;
 
-    db.Characters.findAll({where: {userId: userId}, include: [db.CurrencySystems, db.Games]}).then(chars => {
+    db.Characters.findAll({
+      where: {userId: userId},
+      include: [
+        {model: db.CurrencySystems, include: db.CurrencyUnits},
+        db.Games
+      ]}).then(chars => {
       hlp.respQuery(chars, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
