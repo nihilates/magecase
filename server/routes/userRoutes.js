@@ -9,7 +9,7 @@ module.exports = (app, db) => {
     //Get all entries on the user's table
     db.Users.findAll({
       include: [
-        db.Characters,
+        {model: db.Characters, include: db.Inventory},
         db.Games,
         db.CurrencySystems,
         db.Items,
