@@ -12,7 +12,7 @@ module.exports = (app, db) => {
       where: {userId: userId},
       include: [
         {model: db.CurrencySystems, include: db.CurrencyUnits},
-        db.Games
+        {model: db.Games}
       ]}).then(chars => {
       hlp.respQuery(chars, req, res);
     }).catch((err) => {
