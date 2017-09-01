@@ -23,30 +23,30 @@ module.exports.units = [
     // id: 1,
     unit_name: 'Copper',
     unit_value: 0.01,
-    currencyId: fifthEditionId
+    currencySystemId: fifthEditionId
   },
   {
     // id: 2,
     unit_name: 'Silver',
     unit_value: 0.1,
-    currencyId: fifthEditionId
+    currencySystemId: fifthEditionId
   },
   {
     // id: 3,
     unit_name: 'Electrum',
     unit_value: 0.5,
-    currencyId: fifthEditionId
+    currencySystemId: fifthEditionId
   },
   {
     // id: 4,
     unit_name: 'Gold',
     unit_value: 1,
-    currencyId: fifthEditionId
+    currencySystemId: fifthEditionId
   },
   {
     // id: 5,
     unit_name: 'Platinum',
     unit_value: 10,
-    currencyId: fifthEditionId
+    currencySystemId: fifthEditionId
   }
 ];

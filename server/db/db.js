@@ -48,7 +48,8 @@ module.exports.syncTables = (force, schema) => {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
     unit_name: {type: Sequelize.STRING},
     unit_value: {type: Sequelize.FLOAT},
-    currencyId: {type: Sequelize.INTEGER, allowNull: false} //Foreign-Key, CurrencySystems table
+    // currencyId: {type: Sequelize.INTEGER, allowNull: false} //Foreign-Key, CurrencySystems table
+    currencySystemId: {type: Sequelize.INTEGER, allowNull: false} //Foreign-Key, CurrencySystems table
   }, {timestamps: false});
 
   //Item Types schema
