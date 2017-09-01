@@ -37,7 +37,7 @@ module.exports = (app, db) => {
         db.ShopTypes,
         db.Shops
       ]}).then(users => {
-      hlp.respQuery(_.pick(users[0],), req, res);
+      hlp.respQuery(users, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
