@@ -8,14 +8,14 @@ module.exports = (app, db) => {
   app.get('/api/users/getall', (req, res) => {
     //Get all entries on the user's table
     db.Users.findAll({
-      include: [
-        db.Characters,
-        db.Games,
-        {model: db.CurrencySystems},
-        db.Items,
-        db.AssetTypes,
-        db.ShopTypes,
-        db.Shops
+      include: [{all: true}
+        // db.Characters,
+        // db.Games,
+        // {model: db.CurrencySystems},
+        // db.Items,
+        // db.AssetTypes,
+        // db.ShopTypes,
+        // db.Shops
       ]}).then(users => {
       hlp.respQuery(users, req, res);
     }).catch((err) => {
