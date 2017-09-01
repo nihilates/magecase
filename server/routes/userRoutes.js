@@ -8,7 +8,7 @@ module.exports = (app, db) => {
   app.get('/api/users/account', (req, res) => {
     //Get all details of a user from the user table
     db.Users.findAll({
-      where: {where: {user_name: req.query.identity}},
+      where: {user_name: req.query.identity},
       include: [
         {model: db.Characters,
           include: [
