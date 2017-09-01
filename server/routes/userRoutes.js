@@ -1,17 +1,19 @@
 'use strict'
 const hlp = require('../helper');
+const _ = require('lodash'); //lodash for object property managemnet
 
 //API routes for the Users table
 module.exports = (app, db) => {
 
   /*Development API to check up on tables; disable in production*/
-  app.get('/api/users/account', (req, res) => {
+  app.get('/api/auth/users/fulldetails', (req, res) => {
     let userReq = {
       identity: req.query.identity, //"identity" query can be either a username or email; hlp.parseCreds will determin which it is
       passwd: req.query.password
     };
     //Get all details of a user from the user table
     db.Users.findAll({
+      attributes: [premium_status],
       where: hlp.parseCreds(userReq),
       include: [
         {model: db.Characters,
@@ -35,7 +37,7 @@ module.exports = (app, db) => {
         db.ShopTypes,
         db.Shops
       ]}).then(users => {
-      hlp.respQuery(users, req, res);
+      hlp.respQuery(_.pick(users[0],), req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
