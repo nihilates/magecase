@@ -35,7 +35,7 @@ module.exports = (app, db) => {
         db.ShopTypes,
         db.Shops
       ]}).then(users => {
-      hlp.respQuery(users, req, res, true);
+      hlp.respQuery(users, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
@@ -44,7 +44,7 @@ module.exports = (app, db) => {
   app.get('/api/auth/users/getall', (req, res) => {
     //Get all entries on the user's table
     db.Users.findAll().then(users => {
-      hlp.respQuery(users, req, res, true);
+      hlp.respQuery(users, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
