@@ -11,7 +11,7 @@ module.exports = (app, db) => {
       include: [
         db.Characters,
         db.Games,
-        {model: db.CurrencySystems, include: [db.CurrencyUnits]},
+        {model: db.CurrencySystems},
         db.Items,
         db.AssetTypes,
         db.ShopTypes,
