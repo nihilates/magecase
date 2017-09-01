@@ -143,6 +143,8 @@ module.exports.syncTables = (force, schema) => {
   }, {timestamps: true});
 
   //Foreign Key Configuration//
+  //User Table Keys
+  // module.exports.Users.hasMany(module.exports.characters);
   //Characters Table Foreign-Keys
   module.exports.Characters.belongsTo(module.exports.Users);
   module.exports.Characters.belongsTo(module.exports.Games, {foreignKey: 'gameId'});
