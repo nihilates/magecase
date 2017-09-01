@@ -110,17 +110,17 @@ module.exports.currencyUnits = [
 module.exports.inventories = [
   //Sinjun's Inventory
   {
-    charId: 2,
+    characterId: 2,
     itemId: 26, //Rapier
     count: 1
   },
   {
-    charId: 2,
+    characterId: 2,
     itemId: 2, //Dagger
     count: 2
   },
   {
-    charId: 2,
+    characterId: 2,
     itemId: 13, //Shortbow
     count: 1
   }

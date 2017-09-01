@@ -137,7 +137,7 @@ module.exports.syncTables = (force, schema) => {
   //Inventory schema
   module.exports.Inventory = schema.define('inventory', {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
-    charId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, Characters Table
+    characterId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, Characters Table
     itemId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, Items table
     count: {type: Sequelize.INTEGER, defaultValue: 1}
   }, {timestamps: true});
@@ -160,8 +160,6 @@ module.exports.syncTables = (force, schema) => {
   module.exports.Characters.belongsTo(module.exports.Games, {foreignKey: 'gameId'});
   module.exports.Characters.belongsTo(module.exports.CurrencySystems, {foreignKey: 'currencySystemId'});
   //Games Table Foreign-Keys
-
-
   module.exports.Games.belongsTo(module.exports.Users);
   module.exports.Games.belongsTo(module.exports.CurrencySystems, {foreignKey: 'currencySystemId'});
   //Currency Systems Table Foreign-Keys
@@ -192,6 +190,7 @@ module.exports.syncTables = (force, schema) => {
   module.exports.ShopInventory.belongsTo(module.exports.CurrencySystems, {as: 'currency'});
   module.exports.ShopInventory.belongsTo(module.exports.Items);
   //Character Inventory Table Foreign-Keys
+  module.exports.Inventory.belongsTo(module.exports.Characters);
   module.exports.Inventory.belongsTo(module.exports.Items);
 
   //Sync All Data
