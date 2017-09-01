@@ -13,7 +13,7 @@ module.exports = (app, db) => {
     };
     //Get all details of a user from the user table
     db.Users.findAll({
-      attributes: [premium_status],
+      attributes: ['premium_status'],
       where: hlp.parseCreds(userReq),
       include: [
         {model: db.Characters,
