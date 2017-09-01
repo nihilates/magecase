@@ -6,13 +6,9 @@ module.exports = (app, db) => {
 
   /*Development API to check up on tables; disable in production*/
   app.get('/api/users/account', (req, res) => {
-    let userReq = {
-      identity: req.query.identity, //"identity" query can be either a username or email; hlp.parseCreds will determin which it is
-      passwd: req.query.password
-    };
     //Get all details of a user from the user table
     db.Users.findAll({
-      where: {where: hlp.parseCreds(userReq)},
+      where: {where: {user_name: req.query.identity}},
       include: [
         {model: db.Characters,
           include: [
