@@ -7,7 +7,7 @@ module.exports = (app, db) => {
   /*Development API to check up on tables; disable in production*/
   app.get('/api/users/getall', (req, res) => {
     //Get all entries on the user's table
-    db.Users.findAll().then(users => {
+    db.Users.findAll({include: db.Characters}).then(users => {
       hlp.respQuery(users, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
