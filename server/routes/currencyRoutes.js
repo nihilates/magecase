@@ -17,7 +17,7 @@ module.exports = (app, db) => {
   });
 
   app.get('/api/currency/getall', (req, res) => {
-    db.CurrencySystems.findAll()
+    db.CurrencySystems.findAll({include: {all: true}})
     .then(system => {
       hlp.respQuery(system, req, res);
     }).catch((err) => {
