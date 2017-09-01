@@ -12,7 +12,8 @@ module.exports = (app, db) => {
       where: {userId: userId},
       include: [
         {model: db.CurrencySystems, include: db.CurrencyUnits},
-        {model: db.Games}
+        {model: db.Games,
+          include: {model: db.CurrencySystems, include: db.CurrencyUnits}}
       ]}).then(chars => {
       hlp.respQuery(chars, req, res);
     }).catch((err) => {
