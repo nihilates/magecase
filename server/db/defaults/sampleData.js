@@ -28,25 +28,25 @@ module.exports.games = [
     // id: 1,
     game_name: 'Fantasy Texas',
     userId: 1,
-    currencyId: 1
+    currencySystemId: 1
   },
   {
     // id: 2,
     game_name: 'Tim\'s Campaign',
     userId: 1,
-    currencyId: 1
+    currencySystemId: 1
   },
   {
     // id: 3,
     game_name: 'Innistrad',
     userId: 2,
-    currencyId: 1
+    currencySystemId: 1
   },
   {
     id: 4,
     game_name: 'Laser Dragons',
     userId: 2,
-    currencyId: 1
+    currencySystemId: 1
   }
 ];
 
@@ -55,25 +55,25 @@ module.exports.characters = [
     char_name: 'Biff Meatwagon',
     userId: 1,
     gameId: 1,
-    currencyId: 1
+    currencySystemId: 1
   },
   {
     char_name: 'Sinjun',
     userId: 2,
     gameId: 3,
-    currencyId: 1,
+    currencySystemId: 1,
   },
   {
     char_name: 'Dash Manly',
     userId: 2,
     gameId: 2,
-    currencyId: 1,
+    currencySystemId: 1,
   },
   {
     char_name: 'Rick Rimshot',
     userId: 1,
     gameId: 2,
-    currencyId: 1,
+    currencySystemId: 1,
   }
 ];
 
@@ -91,19 +91,19 @@ module.exports.currencyUnits = [
   // id: 6, //starts at 6 because there already exist several currencies on the table
     unit_name: 'Pence',
     unit_value: 0.01,
-    currencyId: 3, //these belong to the Innistrad system
+    currencySystemId: 3, //these belong to the Innistrad system
   },
   {
   // id: 7,
     unit_name: 'Mark',
     unit_value: 0.1,
-    currencyId: 3,
+    currencySystemId: 3,
   },
   {
   // id: 8,
     unit_name: 'Sovereign',
     unit_value: 1,
-    currencyId: 3,
+    currencySystemId: 3,
   },
 ];
 
@@ -162,43 +162,43 @@ module.exports.shops = [
 module.exports.shopInventories = [
   {
     shopId: 2, //Reilad's Hammer
-    currencyId: 1,
+    currencySystemId: 1,
     itemId: 1, //Club
     count: 5
   },
   {
     shopId: 2, //Reilad's Hammer
-    currencyId: 1,
+    currencySystemId: 1,
     itemId: 3, //Greatclub
     count: 8
   },
   {
     shopId: 2, //Reilad's Hammer
-    currencyId: 1,
+    currencySystemId: 1,
     itemId: 6, //Light hammer
     count: 9
   },
   {
     shopId: 2, //Reilad's Hammer
-    currencyId: 1,
+    currencySystemId: 1,
     itemId: 7, //Mace
     count: 3
   },
   {
     shopId: 2, //Reilad's Hammer
-    currencyId: 1,
+    currencySystemId: 1,
     itemId: 16, //Flail
     count: 4
   },
   {
     shopId: 2, //Reilad's Hammer
-    currencyId: 1,
+    currencySystemId: 1,
     itemId: 23, //Maul
     count: 2
   },
   {
     shopId: 2, //Reilad's Hammer
-    currencyId: 1,
+    currencySystemId: 1,
     itemId: 31, //Warhammer
     count: 3
   }
