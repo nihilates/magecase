@@ -189,7 +189,6 @@ module.exports.syncTables = (force, schema) => {
   module.exports.ShopInventory.belongsTo(module.exports.Items);
   //Character Inventory Table Foreign-Keys
   module.exports.Inventory.belongsTo(module.exports.Items);
-  module.exports.Inventory.belongsTo(module.exports.Characters);
 
   //Sync All Data
   return schema.sync({force: force});
