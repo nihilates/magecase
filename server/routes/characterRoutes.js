@@ -11,7 +11,7 @@ module.exports = (app, db) => {
     db.Characters.findAll({
       where: {userId: userId},
       include: [
-        {model: db.CurrencySystems},
+        {model: db.CurrencySystems, include: db.CurrencyUnits},
         {model: db.Games}
       ]}).then(chars => {
       hlp.respQuery(chars, req, res);
