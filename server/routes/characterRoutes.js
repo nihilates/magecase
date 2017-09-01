@@ -8,12 +8,21 @@ module.exports = (app, db) => {
   app.get('/api/chars', (req, res) => {
     let userId = req.query.userId;
 
-    db.Characters.findAll({where: {userId: userId}}).then(chars => {
+    db.Characters.findAll({where: {userId: userId}, {include: db.CurrencySystems}).then(chars => {
       hlp.respQuery(chars, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
   });
+  // app.get('/api/chars', (req, res) => {
+  //   let userId = req.query.userId;
+
+  //   db.Characters.findAll({where: {userId: userId}}).then(chars => {
+  //     hlp.respQuery(chars, req, res);
+  //   }).catch((err) => {
+  //     hlp.respErr(err, req, res);
+  //   });
+  // });
 
   app.post('/api/chars/create', (req, res) => {
     let userId = req.body.userId;
