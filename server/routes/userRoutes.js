@@ -44,7 +44,7 @@ module.exports = (app, db) => {
   app.get('/api/auth/users/getall', (req, res) => {
     //Get all entries on the user's table
     db.Users.findAll().then(users => {
-      hlp.respQuery(users, req, res);
+      hlp.respQuery(users, req, res, true);
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
