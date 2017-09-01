@@ -156,7 +156,7 @@ module.exports.syncTables = (force, schema) => {
   //Characters Table Foreign-Keys
   module.exports.Characters.hasMany(module.exports.Inventory);
 
-  // module.exports.Characters.belongsTo(module.exports.Users);
+  module.exports.Characters.belongsTo(module.exports.Users);
   module.exports.Characters.belongsTo(module.exports.Games, {foreignKey: 'gameId'});
   module.exports.Characters.belongsTo(module.exports.CurrencySystems, {foreignKey: 'currencyId'});
   //Games Table Foreign-Keys
@@ -167,8 +167,7 @@ module.exports.syncTables = (force, schema) => {
 
   module.exports.CurrencySystems.belongsTo(module.exports.Users);
   //Currency Units Table Foreign-Keys
-  module.exports.CurrencyUnits.belongsTo(module.exports.CurrencySystems);
-  // module.exports.CurrencyUnits.belongsTo(module.exports.CurrencySystems, {foreignKey: 'currencyId'});
+  module.exports.CurrencyUnits.belongsTo(module.exports.CurrencySystems, {as: 'currencyId'});
   //Item Subtypes Table Foreign-Keys
   module.exports.ItemSubtypes.belongsTo(module.exports.ItemTypes, {foreignKey: 'itemTypeId'});
   //Items Table Foreign-Keys
