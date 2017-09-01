@@ -8,10 +8,16 @@ module.exports = (app, db) => {
   app.get('/api/currencysys', (req, res) => {
     let userId = req.query.userId;
 
-    db.CurrencySystems.findAll({
-      // where: {$or: [{is_custom: false}, {userId: userId}]},
-      include: [db.CurrencyUnits]
-    })
+    db.CurrencySystems.findAll({where: {$or: [{is_custom: false}, {userId: userId}]}})
+    .then(system => {
+      hlp.respQuery(system, req, res);
+    }).catch((err) => {
+      hlp.respErr(err, req, res);
+    });
+  });
+
+  app.get('/api/currency/getall', (req, res) => {
+    db.CurrencySystems.findAll()
     .then(system => {
       hlp.respQuery(system, req, res);
     }).catch((err) => {
