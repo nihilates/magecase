@@ -8,7 +8,7 @@ module.exports = (app, db) => {
   app.get('/api/users/getall', (req, res) => {
     //Get all entries on the user's table
     db.Users.findAll({
-      include: [{all: true}
+      include: {all: true}
         // db.Characters,
         // db.Games,
         // {model: db.CurrencySystems},
@@ -16,7 +16,7 @@ module.exports = (app, db) => {
         // db.AssetTypes,
         // db.ShopTypes,
         // db.Shops
-      ]}).then(users => {
+      }).then(users => {
       hlp.respQuery(users, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
