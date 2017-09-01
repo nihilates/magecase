@@ -11,7 +11,7 @@ module.exports = (app, db) => {
     db.Characters.findAll({
       where: {userId: userId},
       include: [
-        {model: db.Inventory},
+        {model: db.Inventory, include: db.Items},
         {model: db.CurrencySystems, include: db.CurrencyUnits},
         {model: db.Games,
           include: {model: db.CurrencySystems, include: db.CurrencyUnits}}
