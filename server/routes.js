@@ -30,6 +30,7 @@ module.exports = (app, express, db) => {
   );
 
   //API calls for User Routes
+  require('./routes/defaultDataRoutes.js')(app, db);
   require('./routes/userRoutes.js')(app, db);
   require('./routes/characterRoutes.js')(app, db);
   require('./routes/gameRoutes.js')(app, db);
