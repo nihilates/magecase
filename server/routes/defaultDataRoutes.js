@@ -5,10 +5,22 @@ const hlp = require('../helper');
 module.exports = (app, db) => {
 
   //Get default Item data
+  app.get('/api/default/currencies', (req, res) => {
+    db.CurrencySystems.findAll({
+      where: {is_custom: false},
+      include: db.CurrencyUnits
+    }).then(currencySys => {
+      hlp.respQuery(currencySys, req, res);
+    }).catch((err) => {
+      hlp.respErr(err, req, res);
+    });
+  });
+
+  //Get default Item data
   app.get('/api/default/items', (req, res) => {
     db.Items.findAll({
       where: {is_custom: false},
-      include: [db.ItemTypes, db.ItemSubtypes]
+      include: {model: db.ItemTypes, include: db.ItemSubtypes}
     }).then(items => {
       hlp.respQuery(items, req, res);
     }).catch((err) => {
@@ -16,7 +28,7 @@ module.exports = (app, db) => {
     });
   });
 
-  //Get default Item data
+  //Get default Item Type data
   app.get('/api/default/types', (req, res) => {
     db.ItemTypes.findAll({
       include: {model: db.ItemSubtypes, where: {is_custom: false}}
