@@ -20,7 +20,7 @@ module.exports = (app, db) => {
 
     db.Items.findAll(
       //if a subType is supplied, prioritize that query. Otherwise, attempt a typeId query. If none are supplied, returns empty array
-      (subTypeId ? {where: {subTypeId: subTypeId}} : {where: {typeId: typeId}})
+      (subTypeId ? {where: {itemSubTypeId: subTypeId}} : {where: {itemTypeId: typeId}})
       ).then(type => {
       hlp.respQuery(type, req, res);
     }).catch((err) => {
