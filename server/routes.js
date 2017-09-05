@@ -38,7 +38,7 @@ module.exports = (app, express, db) => {
   require('./routes/currencyRoutes.js')(app, db);
   require('./routes/inventoryRoutes.js')(app, db);
 
-  //Catch-All for GET requests
+  //Catch-All for empty GET requests
   app.get('/', (req, res) => {
     res.send('Success! Natural 20!');
   });

@@ -1,15 +1,28 @@
 'use strict'
 const hlp = require('../helper');
 
-//API routes for the Users table
+//API routes to grab all non-custom data that needs to be stored locally on the device for quick access
 module.exports = (app, db) => {
 
+  //Get default Item data
   app.get('/api/default/items', (req, res) => {
     db.Items.findAll({
       where: {is_custom: false},
       include: [db.ItemTypes, db.ItemSubtypes]
     }).then(items => {
       hlp.respQuery(items, req, res);
+    }).catch((err) => {
+      hlp.respErr(err, req, res);
+    });
+  });
+
+  //Get default Item data
+  app.get('/api/default/types', (req, res) => {
+    db.ItemTypes.findAll({
+      where: {is_custom: false},
+      include: {model: db.ItemSubtypes, where: {is_custom: false}}
+    }).then(types => {
+      hlp.respQuery(types, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
