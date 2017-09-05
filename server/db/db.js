@@ -22,7 +22,7 @@ module.exports.syncTables = (force, schema) => {
     userId: {type: Sequelize.INTEGER, allowNull: false}, //Foreign-Key, Users table
     char_name: {type: Sequelize.STRING},
     gameId: {type: Sequelize.INTEGER, allowNull: true}, //Foreign-Key, Games table
-    currencySystemId: {type: Sequelize.INTEGER, allowNull: true} //Foreign-Key, CurrencySystem table
+    currencySystemId: {type: Sequelize.INTEGER, defaultValue: 1, allowNull: false} //Foreign-Key, CurrencySystem table
   }, {timestamps: true});
 
   //Games schema
