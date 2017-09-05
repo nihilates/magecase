@@ -4,7 +4,7 @@ const hlp = require('../helper');
 //API routes to grab all non-custom data that needs to be stored locally on the device for quick access
 module.exports = (app, db) => {
 
-  //Get default Item data
+  //Get default Currency data
   app.get('/api/default/currencies', (req, res) => {
     db.CurrencySystems.findAll({
       where: {is_custom: false},
@@ -34,6 +34,17 @@ module.exports = (app, db) => {
       include: {model: db.ItemSubtypes, where: {is_custom: false}}
     }).then(types => {
       hlp.respQuery(types, req, res);
+    }).catch((err) => {
+      hlp.respErr(err, req, res);
+    });
+  });
+
+  //Get default Shop Type data
+  app.get('/api/default/shoptypes', (req, res) => {
+    db.ShopTypes.findAll({
+      where: {is_custom: false}
+    }).then(shopTypes => {
+      hlp.respQuery(shopTypes, req, res);
     }).catch((err) => {
       hlp.respErr(err, req, res);
     });
