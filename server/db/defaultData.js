@@ -62,9 +62,9 @@ module.exports.seedData = db => {
   sample.currencyUnits.forEach(unit => {
     db.CurrencyUnits.create(unit)
   });
-  // sample.characters.forEach(character => { //Create sample characters
-  //   db.Characters.create(character);
-  // });
+  sample.characters.forEach(character => { //Create sample characters
+    db.Characters.create(character);
+  });
   sample.inventories.forEach(entry => {
     db.Inventory.create(entry);
   });
