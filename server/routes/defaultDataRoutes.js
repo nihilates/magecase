@@ -20,7 +20,7 @@ module.exports = (app, db) => {
   app.get('/api/default/items', (req, res) => {
     db.Items.findAll({
       where: {is_custom: false},
-      include: {model: db.ItemSubTypes, include: db.ItemTypes}
+      include: [db.ItemTypes, db.ItemSubtypes]
     }).then(items => {
       hlp.respQuery(items, req, res);
     }).catch((err) => {
