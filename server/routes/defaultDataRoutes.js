@@ -19,7 +19,6 @@ module.exports = (app, db) => {
   //Get default Item data
   app.get('/api/default/types', (req, res) => {
     db.ItemTypes.findAll({
-      where: {is_custom: false},
       include: db.ItemSubtypes
     }).then(types => {
       hlp.respQuery(types, req, res);
