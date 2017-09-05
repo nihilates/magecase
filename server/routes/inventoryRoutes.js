@@ -8,7 +8,7 @@ module.exports = (app, db) => {
     let charId = req.query.charId;
 
     db.Inventory.findAll({
-      where: {charId: charId},
+      where: {characterId: charId},
       include: [
         {model: db.Items, include: [db.ItemTypes, db.ItemSubtypes]}
       ]}).then(entries => {
@@ -24,7 +24,7 @@ module.exports = (app, db) => {
     let count = req.body.count;
 
     db.Inventory.create({
-      charId: charId,
+      characterId: charId,
       itemId: itemId,
       count: count
     }).then(entry => {
@@ -37,7 +37,7 @@ module.exports = (app, db) => {
   app.put('/api/inventory/update', (req, res) => {
     let charId = req.body.charId;
 
-    db.Inventory.find({where: {charId: charId}}).then(inventory => {
+    db.Inventory.find({where: {characterId: charId}}).then(inventory => {
       if (!inventory) {
         res.status(500).send('Inventory Not Found');
       } else {
@@ -55,7 +55,7 @@ module.exports = (app, db) => {
     let charId = req.body.charId;
     let id = req.body.id;
 
-    db.Inventory.destroy({where: {$and: [{id: id}, {charId: charId}]}}).then(() => {
+    db.Inventory.destroy({where: {$and: [{id: id}, {characterId: charId}]}}).then(() => {
       hlp.respQuery('Success', req, res);
     }).catch(err => {
       hlp.respErr(err, req, res);
