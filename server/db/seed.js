@@ -5,4 +5,4 @@ const config = require('../config.js');
 
 db.syncTables(true, config.database).then(() => {
   defaults.seedData(db);
-});
+}).end();
